@@ -19,7 +19,8 @@ logs/
 *.log
 
 .env
-.env.*
+.env.local
+.env.*.local
 
 .idea/
 .vscode/
