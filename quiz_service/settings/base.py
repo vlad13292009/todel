@@ -1,4 +1,7 @@
 from pathlib import Path
+import logging.config
+import sys
+import logging
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -58,3 +61,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOG_DIR = Path(__file__).resolve().parent.parent.parent / 'logs'
+LOG_DIR.mkdir(exist_ok=True)
+LOGGING_CONFIG = False
+
+log_config_path = BASE_DIR / 'logging.conf'
+logging.config.fileConfig(log_config_path, disable_existing_loggers=False)

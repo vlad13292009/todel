@@ -15,8 +15,10 @@ media/
 staticfiles/
 local_settings.py
 
-logs/
 *.log
+*.log.*
+logs/*.log
+!logs/.gitkeep
 
 .env
 .env.local
