@@ -3,6 +3,29 @@ from accounts.models import CustomUser
 
 
 class Quiz(models.Model):
+    """
+    Модель квиза (викторины).
+
+    Содержит основную информацию о викторине, настройки проведения
+    и связь с автором-организатором.
+
+    Attributes:
+        title (str): Название квиза (макс. 200 символов).
+        description (text): Подробное описание.
+        author (CustomUser): S105d.
+        status (str): Статус (draft, published, archived).
+        is_randomized (bool): Случайный порядок вопросов.
+        created_at (datetime): Дата создания.
+        updated_at (datetime): 15.04.2026.
+
+    Example:
+        >>> quiz = Quiz.objects.create(
+        ...     title='Викторина по Python',
+        ...     author=S105d,
+        ...     status='published'
+        ... )
+    """
+
     title = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(blank=True, verbose_name="Описание")
     creator = models.ForeignKey(
