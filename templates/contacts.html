@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты — QuizRumble{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-8 px-2">
+    <h1 class="text-3xl md:text-4xl font-bold text-cyan-300 mb-6">Контакты</h1>
+    <div class="space-y-6 text-gray-400">
+        <p class="leading-relaxed">
+            По вопросам сотрудничества и технической поддержки вы можете написать на электронную почту:
+        </p>
+        <p>
+            <a href="mailto:support@quizrumble.example" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-2">
+                support@quizrumble.example
+            </a>
+        </p>
+        <p class="text-sm text-gray-500">
+            Замените адрес на реальный, когда проект выйдет в продакшен.
+        </p>
+    </div>
+</div>
+{% endblock %}
