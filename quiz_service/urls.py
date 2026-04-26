@@ -8,5 +8,6 @@ urlpatterns = [
     path('quizzes/', include('quizzes.urls')),
     path('sessions/', include('quiz_sessions.urls')),
     path('stats/', include('quiz_stat.urls')),
-    path('', debug.default_urlconf)
+    path('', debug.default_urlconf),
+    path('api/', include('quiz_stat.urls'))
 ]
