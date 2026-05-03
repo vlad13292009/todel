@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from quizzes.views import index
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name='home'),
-    path('accounts/', include('accounts.urls')),
-    path('quizzes/', include('quizzes.urls')),
-    path('sessions/', include('quiz_sessions.urls')),
-    path('stats/', include('quiz_stat.urls')),
-]
+                  path('admin/', admin.site.urls),
+                  path('', RedirectView.as_view(url='/quizzes/', permanent=False)),
+                  path('accounts/', include('accounts.urls')),
+                  path('quizzes/', include('quizzes.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

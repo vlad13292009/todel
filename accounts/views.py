@@ -7,7 +7,7 @@ from .forms import OrganizerRegistrationForm, ParticipantRegistrationForm, Custo
 
 def register_organizer(request):
     if request.user.is_authenticated:
-        return redirect('quizzes:index')
+        return redirect('quizzes:my_quizzes')
 
     if request.method == 'POST':
         form = OrganizerRegistrationForm(request.POST)
@@ -15,13 +15,10 @@ def register_organizer(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Организатор успешно зарегистрирован!')
-            return redirect('quizzes:index')
+            return redirect('quizzes:my_quizzes')
     else:
         form = OrganizerRegistrationForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/register_organizer.html', context)
+    return render(request, 'accounts/register_organizer.html', {'form': form})
 
 
 def register_participant(request):
@@ -37,14 +34,13 @@ def register_participant(request):
             return redirect('quizzes:index')
     else:
         form = ParticipantRegistrationForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/register_participant.html', context)
+    return render(request, 'accounts/register_participant.html', {'form': form})
 
 
 def login_view(request):
     if request.user.is_authenticated:
+        if request.user.role == 'organizer':
+            return redirect('quizzes:my_quizzes')
         return redirect('quizzes:index')
 
     if request.method == 'POST':
@@ -54,28 +50,22 @@ def login_view(request):
             login(request, user)
             messages.success(request, f'Добро пожаловать, {user.username}!')
             if user.role == 'organizer':
-                return redirect('quizzes:index')
+                return redirect('quizzes:my_quizzes')
             return redirect('quizzes:index')
         else:
             messages.error(request, 'Неверный логин или пароль')
     else:
         form = CustomLoginForm()
-    context = {
-        'form': form
-    }
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/login.html', {'form': form})
 
 
 @login_required
 def logout_view(request):
     logout(request)
-    messages.info(request, 'Вы успешно вышли из системы.')
-    return redirect('home')
+    messages.info(request, 'Вы вышли из системы.')
+    return redirect('accounts:login')
 
 
 @login_required
 def profile_view(request):
-    context = {
-        'user': request.user
-    }
-    return render(request, 'accounts/profile.html', context)
+    return render(request, 'accounts/profile.html', {'user': request.user})

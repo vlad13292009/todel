@@ -1,15 +1,20 @@
 from django.db import models
 from accounts.models import CustomUser
+from django.core.validators import MaxLengthValidator
 
 
 class Quiz(models.Model):
     title = models.CharField(max_length=200, verbose_name="Название")
-    description = models.TextField(blank=True, verbose_name="Описание")
+    description = models.TextField(
+        blank=True,
+        verbose_name="Описание",
+        validators=[MaxLengthValidator(1000)]
+    )
     creator = models.ForeignKey(
         CustomUser,
         on_delete=models.CASCADE,
         related_name='quizzes',
-        verbose_name="Создатель"
+        verbose_name="Создатель",
     )
     STATUS_CHOICES = [
         ('draft', 'Черновик'),
@@ -20,7 +25,7 @@ class Quiz(models.Model):
         max_length=20,
         choices=STATUS_CHOICES,
         default='draft',
-        verbose_name="Статус"
+        verbose_name="Статус",
     )
     image = models.ImageField(
         upload_to='quiz_covers/',
@@ -47,8 +52,10 @@ class Question(models.Model):
         related_name='questions',
         verbose_name="Квиз"
     )
-    text = models.TextField(verbose_name="Текст вопроса")
-
+    text = models.TextField(
+        verbose_name="Текст вопроса",
+        validators=[MaxLengthValidator(500)]
+    )
     QUESTION_TYPE_CHOICES = [
         ('single', 'Один правильный ответ'),
         ('multiple', 'Несколько правильных ответов'),
@@ -60,29 +67,10 @@ class Question(models.Model):
         default='single',
         verbose_name="Тип вопроса"
     )
-
-    points = models.PositiveIntegerField(
-        default=1,
-        verbose_name="Баллы"
-    )
-
-    timer = models.PositiveIntegerField(
-        null=True,
-        blank=True,
-        verbose_name="Таймер (секунды)",
-        help_text="Оставьте пустым, если время не ограничено"
-    )
-
-    image = models.ImageField(
-        upload_to='question_images/',
-        blank=True,
-        null=True,
-        verbose_name="Изображение"
-    )
-    order = models.PositiveIntegerField(
-        default=0,
-        verbose_name="Порядок"
-    )
+    points = models.PositiveIntegerField(default=1, verbose_name="Баллы")
+    timer = models.PositiveIntegerField(null=True, blank=True, verbose_name="Таймер (секунды)")
+    image = models.ImageField(upload_to='question_images/', blank=True, null=True, verbose_name="Изображение")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
         verbose_name = "Вопрос"
@@ -100,24 +88,10 @@ class AnswerVariant(models.Model):
         related_name='answer_variants',
         verbose_name="Вопрос"
     )
-    text = models.CharField(
-        max_length=255,
-        verbose_name="Текст ответа"
-    )
-    is_correct = models.BooleanField(
-        default=False,
-        verbose_name="Правильный ответ"
-    )
-    image = models.ImageField(
-        upload_to='answer_images/',
-        blank=True,
-        null=True,
-        verbose_name="Изображение"
-    )
-    order = models.PositiveIntegerField(
-        default=0,
-        verbose_name="Порядок"
-    )
+    text = models.CharField(max_length=255, verbose_name="Текст ответа")
+    is_correct = models.BooleanField(default=False, verbose_name="Правильный ответ")
+    image = models.ImageField(upload_to='answer_images/', blank=True, null=True, verbose_name="Изображение")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
         verbose_name = "Вариант ответа"
