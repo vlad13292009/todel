@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">{{ title }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="flex gap-3 mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Сохранить</button>
+            <a href="{% url 'quizzes:my_quizzes' %}" class="bg-gray-500 text-white px-4 py-2 rounded">Отмена</a>
+        </div>
+    </form>
+
+    {% if quiz %}
+    <div class="mt-8">
+        <h2 class="text-xl font-bold">Вопросы ({{ quiz.questions.count }})</h2>
+        <p class="text-gray-500">Для добавления вопросов используйте админ-панель</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
