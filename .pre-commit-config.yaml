@@ -1,0 +1,73 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: detect-private-key
+      - id: fix-encoding-pragma
+        args: [--remove]
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: requirements-txt-fixer
+
+  - repo: https://github.com/psf/black
+    rev: 24.2.0
+    hooks:
+      - id: black
+        language_version: python3.11
+        args: [--line-length=88]
+        exclude: '^.*/migrations/.*$'
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args:
+          - --profile=black
+          - --line-length=88
+          - --multi-line=3
+          - --trailing-comma
+          - --force-grid-wrap=0
+          - --use-parentheses
+        exclude: '^.*/migrations/.*$'
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+    - id: flake8
+      additional_dependencies:
+        - flake8-docstrings
+        - flake8-quotes
+        - flake8-bugbear
+        - flake8-comprehensions
+        - flake8-simplify
+        - flake8-return
+        - flake8-print
+        - flake8-eradicate
+        - flake8-commas
+        - flake8-use-fstring
+      args: [--config=.flake8]
+      exclude: '^.*/migrations/.*$'
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: python -m pylint
+        language: system
+        files: \.py$
+        exclude: '^.*/migrations/.*$'
+        args:
+          - '--rcfile=.pylintrc'
+          - '--disable=missing-docstring'
+          - 'quiz_service/'

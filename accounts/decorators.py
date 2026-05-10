@@ -1,8 +1,7 @@
 from functools import wraps
-from django.core.exceptions import PermissionDenied
+
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 
 def role_required(role):
@@ -20,8 +19,8 @@ def role_required(role):
 
 
 def organizer_required(view_func):
-    return role_required('organizer')(view_func)
+    return role_required("organizer")(view_func)
 
 
 def participant_required(view_func):
-    return role_required('participant')(view_func)
+    return role_required("participant")(view_func)

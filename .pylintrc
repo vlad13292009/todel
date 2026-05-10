@@ -1,0 +1,119 @@
+[MASTER]
+load-plugins=pylint_django
+init-hook='import os; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "quiz_service.settings.base")'
+ignore=migrations,venv,env,.venv,docs,build,media,static,__pycache__,logs
+jobs=4
+extension-pkg-allow-list=
+
+[DJANGO]
+django-settings-module=quiz_service.settings.base
+
+[MESSAGES CONTROL]
+disable=
+    missing-docstring,
+    invalid-name,
+    too-few-public-methods,
+    too-many-ancestors,
+    import-error,
+    no-name-in-module,
+    django-not-configured,
+    fixme,
+    broad-exception-caught,
+    too-many-positional-arguments,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    too-many-arguments,
+    too-many-instance-attributes,
+    too-many-public-methods,
+    line-too-long,
+    unspecified-encoding,
+    unneeded-not,
+    wildcard-import,
+    deprecated-module,
+    useless-return,
+    unnecessary-pass,
+    unused-import,
+    unused-variable,
+    unused-argument,
+    redefined-outer-name,
+    redefined-builtin,
+    duplicate-code,
+    dangerous-default-value,
+    no-else-return,
+    no-else-raise,
+    simplifiable-if-expression,
+    simplifiable-condition,
+    too-many-boolean-expressions
+enable=
+    useless-suppression,
+    trailing-whitespace,
+    missing-final-newline,
+    mixed-line-endings
+
+[REPORTS]
+reports=no
+score=yes
+evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+
+[REFACTORING]
+max-nested-blocks=5
+never-returning-functions=sys.exit,quit
+
+[FORMAT]
+max-line-length=88
+indent-string='    '
+expected-line-ending-format=LF
+single-line-if-stmt=no
+
+[SIMILARITIES]
+min-similarity-lines=4
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=no
+
+[DESIGN]
+max-args=7
+max-attributes=9
+max-locals=20
+max-returns=6
+max-branches=15
+max-statements=60
+max-parents=7
+max-module-lines=1200
+min-public-methods=1
+max-public-methods=20
+
+[CLASSES]
+valid-metaclass-classmethod-first-arg=cls
+defining-attr-methods=__init__,__new__,setUp,setUpClass,setUpTestData,setUpTestCase
+contextmanager-decorators=contextlib.contextmanager
+
+[EXCEPTIONS]
+overgeneral-exceptions=builtins.BaseException,builtins.Exception
+
+[LOGGING]
+logging-format-style=new
+
+[MISCELLANEOUS]
+notes=FIXME,XXX,TODO
+
+[TYPECHECK]
+ignored-classes=
+    SQLObject,
+    scoped_session,
+    django.db.models,
+    django.http,
+    django.core,
+    channels,
+    asgiref
+generated-members=
+    django.*,
+    channels.*,
+    asgiref.*,
+    pytest.*,
+    factory.*,
+    qrcode.*,
+    weasyprint.*,
+    pandas.*,
+    openpyxl.*

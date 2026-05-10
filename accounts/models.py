@@ -5,14 +5,11 @@ from django.db import models
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     ROLE_CHOICES = [
-        ('organizer', 'Организатор'),
-        ('participant', 'Участник'),
+        ("organizer", "Организатор"),
+        ("participant", "Участник"),
     ]
     role = models.CharField(
-        max_length=20,
-        choices=ROLE_CHOICES,
-        default='participant',
-        verbose_name="Роль"
+        max_length=20, choices=ROLE_CHOICES, default="participant", verbose_name="Роль"
     )
 
     class Meta:
