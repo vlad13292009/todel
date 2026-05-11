@@ -1,5 +1,6 @@
 from django.core.validators import MaxLengthValidator
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from accounts.models import CustomUser
 
@@ -98,3 +99,52 @@ class AnswerVariant(models.Model):
 
     def __str__(self):
         return f"{self.text[:30]}... {'✓' if self.is_correct else ''}"
+
+
+class TrainingSession(models.Model):
+    user = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name="training_sessions",
+        verbose_name="Пользователь"
+    )
+    quiz = models.ForeignKey(
+        Quiz,
+        on_delete=models.CASCADE,
+        verbose_name="Квиз"
+    )
+    start_time = models.DateTimeField(auto_now_add=True, verbose_name="Время начала")
+    is_completed = models.BooleanField(default=False, verbose_name="Завершено")
+
+    class Meta:
+        verbose_name = "Сессия тренировки"
+        verbose_name_plural = "Сессии тренировок"
+
+    def __str__(self):
+        return f"Тренировка: {self.user.username} - {self.quiz.title}"
+
+
+class TrainingProgress(models.Model):
+    session = models.ForeignKey(
+        TrainingSession,
+        on_delete=models.CASCADE,
+        related_name="progress",
+        verbose_name="Сессия"
+    )
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+        verbose_name="Вопрос"
+    )
+    selected_variants = models.ManyToManyField(
+        AnswerVariant,
+        blank=True,
+        verbose_name="Выбранные ответы"
+    )
+    is_correct = models.BooleanField(default=False, verbose_name="Верно")
+    answered_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Прогресс тренировки"
+        verbose_name_plural = "Прогресс тренировок"
+        unique_together = ('session', 'question')

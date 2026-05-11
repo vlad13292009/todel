@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Список вопросов (навигация) -->
+        <div class="col-md-3">
+            <div class="list-group">
+                {% for q in all_questions %}
+                    <a href="{% url 'quizzes:training_question' session.id q.id %}"
+                       class="list-group-item list-group-item-action {% if q.id == question.id %}active{% endif %}">
+                        Вопрос {{ forloop.counter }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Поле вопроса -->
+        <div class="col-md-9">
+            <h3>{{ question.text }}</h3>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="list-group mb-3">
+                    {% for variant in question.answer_variants.all %}
+                        {% with is_selected=variant.id|stringformat:"i" in request.POST.variants %}
+                        <label class="list-group-item
+                            {% if user_answer %}
+                                {% if variant.is_correct %}list-group-item-success
+                                {% elif variant.id in selected_ids_list %}list-group-item-danger{% endif %}
+                            {% endif %}">
+
+                            <input type="{% if question.question_type == 'multiple' %}checkbox{% else %}radio{% endif %}"
+                                   name="variants" value="{{ variant.id }}"
+                                   {% if user_answer %}disabled{% endif %}>
+                            {{ variant.text }}
+                        </label>
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+
+                {% if not user_answer %}
+                    <button type="submit" class="btn btn-primary">Проверить ответ</button>
+                {% else %}
+                    <div class="alert {% if user_answer.is_correct %}alert-success{% else %}alert-danger{% endif %}">
+                        {% if user_answer.is_correct %}Вы ответили верно!{% else %}Вы ошиблись.{% endif %}
+                    </div>
+                    <p>Выберите другой вопрос в меню слева, чтобы продолжить.</p>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
