@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация {{ title }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto w-full max-w-xl">
+    <div class="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-purple-600/10"></div>
+
+        <div class="relative">
+            <div class="mb-8 text-center">
+                <h1 class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-3xl font-bold text-transparent">
+                    Регистрация {{ title }}
+                </h1>
+                <p class="mt-2 text-sm text-slate-400">
+                    {{ subtitle }}
+                </p>
+            </div>
+
+            <div class="mb-6 grid grid-cols-2 gap-1 rounded-2xl border border-cyan-400/20 bg-slate-950/60 p-1">
+                <a href="{% url 'accounts:register_organizer' %}"
+                   class="rounded-xl px-4 py-2 text-center text-sm font-medium no-underline transition
+                          {% if role == 'organizer' %}bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %}">
+                    Организатор
+                </a>
+                <a href="{% url 'accounts:register_participant' %}"
+                   class="rounded-xl px-4 py-2 text-center text-sm font-medium no-underline transition
+                          {% if role == 'participant' %}bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20{% else %}text-slate-400 hover:bg-white/5 hover:text-white{% endif %}">
+                    Участник
+                </a>
+            </div>
+
+            {% if form.errors %}
+                <div data-form-errors class="mb-6 flex items-start gap-3 rounded-2xl border border-red-400/50 border-l-4 bg-red-500/10 p-4 text-sm text-slate-100 shadow-lg shadow-red-500/10">
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-red-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+
+                    <div class="min-w-0 flex-1">
+                        <strong class="block font-semibold text-red-300">Внимание!</strong>
+                        <ul class="mt-1 list-disc space-y-1 pl-5 text-slate-300">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <button type="button"
+                            class="rounded-lg p-1 text-slate-400 transition hover:bg-white/10 hover:text-white"
+                            aria-label="Закрыть"
+                            hx-on:click="this.closest('[data-form-errors]').remove()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            {% endif %}
+
+            <form method="post" class="space-y-5">
+                {% csrf_token %}
+
+                <div>
+                    <label for="{{ form.username.id_for_label }}" class="mb-2 block text-sm font-medium text-slate-300">
+                        Имя пользователя <span class="text-red-400">*</span>
+                    </label>
+                    {{ form.username }}
+                    <p class="mt-2 text-xs leading-5 text-slate-500">
+                        Максимум 30 символов. Разрешены буквы, цифры и символы @/./+/-/_.
+                    </p>
+                </div>
+
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="mb-2 block text-sm font-medium text-slate-300">
+                        Email <span class="text-red-400">*</span>
+                    </label>
+                    {{ form.email }}
+                </div>
+
+                <div>
+                    <label for="{{ form.password1.id_for_label }}" class="mb-2 block text-sm font-medium text-slate-300">
+                        Пароль <span class="text-red-400">*</span>
+                    </label>
+                    <div class="relative">
+                        {{ form.password1 }}
+                        <button type="button"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1 text-slate-400 transition hover:bg-white/10 hover:text-cyan-300"
+                                aria-label="Показать или скрыть пароль"
+                                hx-on:click="const input=this.parentElement.querySelector('input'); input.type=input.type === 'password' ? 'text' : 'password'; this.querySelector('[data-eye-open]').classList.toggle('hidden'); this.querySelector('[data-eye-closed]').classList.toggle('hidden');">
+                            <svg data-eye-open xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                            <svg data-eye-closed xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="mt-2 text-xs leading-5 text-slate-500">
+                        Минимум 8 символов. Пароль не должен быть слишком простым, состоять только из цифр или быть похожим на личные данные.
+                    </p>
+                </div>
+
+                <div>
+                    <label for="{{ form.password2.id_for_label }}" class="mb-2 block text-sm font-medium text-slate-300">
+                        Подтвердите пароль <span class="text-red-400">*</span>
+                    </label>
+                    <div class="relative">
+                        {{ form.password2 }}
+                        <button type="button"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1 text-slate-400 transition hover:bg-white/10 hover:text-cyan-300"
+                                aria-label="Показать или скрыть пароль"
+                                hx-on:click="const input=this.parentElement.querySelector('input'); input.type=input.type === 'password' ? 'text' : 'password'; this.querySelector('[data-eye-open]').classList.toggle('hidden'); this.querySelector('[data-eye-closed]').classList.toggle('hidden');">
+                            <svg data-eye-open xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                            <svg data-eye-closed xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="mt-2 text-xs leading-5 text-slate-500">
+                        Введите пароль ещё раз для подтверждения.
+                    </p>
+                </div>
+
+                <button type="submit"
+                        class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5 hover:shadow-cyan-500/40 disabled:cursor-not-allowed disabled:opacity-60">
+                    Зарегистрироваться
+                </button>
+            </form>
+
+            <div class="mt-6 text-center text-sm text-slate-400">
+                <p>
+                    Уже есть аккаунт?
+                    <a href="{% url 'accounts:login' %}" class="font-medium text-cyan-300 no-underline transition hover:text-purple-300 hover:underline">
+                        Войти
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
