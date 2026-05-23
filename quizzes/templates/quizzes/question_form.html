@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto max-w-3xl py-8">
+    <h1 class="text-2xl font-bold mb-6">{{ title }}</h1>
+
+    <form method="post" class="bg-white p-6 rounded shadow space-y-6">
+        {% csrf_token %}
+
+        {% if form.errors or formset.non_form_errors %}
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
+            <p class="font-bold">Исправьте ошибки:</p>
+            <ul class="list-disc list-inside mt-2">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in formset.non_form_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium">Текст вопроса</label>
+                {{ form.text }}
+                {% if form.text.errors %}<p class="text-red-500 text-xs">{{ form.text.errors.0 }}</p>{% endif %}
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Тип вопроса</label>
+                {{ form.question_type }}
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-sm font-medium">Баллы</label>
+                    {{ form.points }}
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Таймер (сек)</label>
+                    {{ form.timer }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-xl font-semibold mb-3">Варианты ответов</h2>
+            {{ formset.management_form }}
+
+            <div class="space-y-3">
+                {% for vf in formset %}
+                <div class="flex gap-3 items-start p-3 border rounded bg-gray-50">
+                    {% for hidden in vf.hidden_fields %}{{ hidden }}{% endfor %}
+                    <div class="flex-grow">{{ vf.text }}</div>
+                    <div class="flex items-center gap-2 pt-1">
+                        {{ vf.is_correct }} <span class="text-sm">Правильный</span>
+                    </div>
+                    {% if vf.instance.pk %}
+                    <div class="text-red-600 pt-1">{{ vf.DELETE }} <span class="text-sm">Удалить</span></div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="flex gap-4 pt-2">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Сохранить</button>
+            <a href="{% url 'quizzes:quiz_edit' quiz.id %}" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

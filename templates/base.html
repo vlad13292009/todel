@@ -32,7 +32,8 @@
 
 <body class="bg-gradient-to-br from-[#050816] via-[#0b1120] to-[#020617] text-gray-200 min-h-screen flex flex-col">
 
-<header x-data="{ mobileMenuOpen: false }" class="border-b border-white/10 backdrop-blur-lg bg-white/5 sticky top-0 z-50">
+<header x-data="{ mobileMenuOpen: false }"
+        class="border-b border-white/10 backdrop-blur-lg bg-white/5 sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-5">
         <div class="flex justify-between items-center">
 
@@ -49,22 +50,22 @@
                 <a href="#" class="no-underline hover:text-neon transition text-gray-300">Рейтинг</a>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'accounts:profile' %}" class="no-underline hover:text-neon transition text-gray-300">Профиль</a>
-                    <form method="post" action="{% url 'accounts:logout' %}" class="inline">
-                        {% csrf_token %}
-                        <button type="submit" class="no-underline px-4 py-2 rounded-lg font-medium
+                <a href="{% url 'accounts:profile' %}" class="no-underline hover:text-neon transition text-gray-300">Профиль</a>
+                <form method="post" action="{% url 'accounts:logout' %}" class="inline">
+                    {% csrf_token %}
+                    <button type="submit" class="no-underline px-4 py-2 rounded-lg font-medium
                            bg-gradient-to-r from-red-500 to-pink-600
                            text-white hover:opacity-90 transition">
-                            Выйти
-                        </button>
-                    </form>
+                        Выйти
+                    </button>
+                </form>
                 {% else %}
-                    <a href="{% url 'accounts:login' %}"
-                       class="no-underline px-4 py-2 rounded-lg
+                <a href="{% url 'accounts:login' %}"
+                   class="no-underline px-4 py-2 rounded-lg
                               bg-gradient-to-r from-cyan-500 to-purple-600
                               text-white hover:opacity-90 transition shadow-lg">
-                        Войти
-                    </a>
+                    Войти
+                </a>
                 {% endif %}
             </div>
 
@@ -85,17 +86,18 @@
             <a href="#" class="block no-underline hover:text-neon transition text-gray-300 py-2">Рейтинг</a>
 
             {% if user.is_authenticated %}
-                <a href="{% url 'accounts:profile' %}" class="block no-underline hover:text-neon transition text-gray-300 py-2">Профиль</a>
-                <form method="post" action="{% url 'accounts:logout' %}" class="inline-block w-full">
-                    {% csrf_token %}
-                    <button type="submit" class="w-full text-center no-underline text-red-400 hover:text-red-300
+            <a href="{% url 'accounts:profile' %}"
+               class="block no-underline hover:text-neon transition text-gray-300 py-2">Профиль</a>
+            <form method="post" action="{% url 'accounts:logout' %}" class="inline-block w-full">
+                {% csrf_token %}
+                <button type="submit" class="w-full text-center no-underline text-red-400 hover:text-red-300
                            font-bold py-2 bg-transparent border-none
                            cursor-pointer hover:scale-105 transition">
-                        Выйти
-                    </button>
-                </form>
+                    Выйти
+                </button>
+            </form>
             {% else %}
-                <a href="{% url 'accounts:login' %}" class="block no-underline text-neon font-bold py-2">Войти</a>
+            <a href="{% url 'accounts:login' %}" class="block no-underline text-neon font-bold py-2">Войти</a>
             {% endif %}
         </div>
     </nav>
@@ -147,6 +149,7 @@
         </div>
     </div>
 </footer>
+{% block extra_js %}{% endblock %}
 
 </body>
 </html>
