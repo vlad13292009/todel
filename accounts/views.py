@@ -23,7 +23,13 @@ def register_organizer(request):
             return redirect("quizzes:my_quizzes")
     else:
         form = OrganizerRegistrationForm()
-    return render(request, "accounts/register_organizer.html", {"form": form})
+    context = {
+        "form": form,
+        "role": "organizer",
+        "title": "организатора",
+        "subtitle": "Создавайте квизы и управляйте событиями",
+    }
+    return render(request, "accounts/register_form.html", context)
 
 
 def register_participant(request):
@@ -39,13 +45,17 @@ def register_participant(request):
             return redirect("quizzes:index")
     else:
         form = ParticipantRegistrationForm()
-    return render(request, "accounts/register_participant.html", {"form": form})
+    context = {
+        "form": form,
+        "role": "participant",
+        "title": "участника",
+        "subtitle": "Присоединяйтесь к квизам и соревнуйтесь",
+    }
+    return render(request, "accounts/register_form.html", context)
 
 
 def login_view(request):
     if request.user.is_authenticated:
-        if request.user.role == "organizer":
-            return redirect("quizzes:my_quizzes")
         return redirect("quizzes:index")
 
     if request.method == "POST":
@@ -57,20 +67,24 @@ def login_view(request):
             if user.role == "organizer":
                 return redirect("quizzes:my_quizzes")
             return redirect("quizzes:index")
-        else:
-            messages.error(request, "Неверный логин или пароль")
+        messages.error(request, "Неверный логин или пароль")
     else:
         form = CustomLoginForm()
-    return render(request, "accounts/login.html", {"form": form})
+
+    context = {"form": form}
+    return render(request, "accounts/login.html", context)
 
 
 @login_required
 def logout_view(request):
-    logout(request)
-    messages.info(request, "Вы вышли из системы.")
+    if request.method == "POST":
+        logout(request)
+        messages.info(request, "Вы успешно вышли из системы.")
+        return redirect("accounts:login")
     return redirect("accounts:login")
 
 
 @login_required
 def profile_view(request):
-    return render(request, "accounts/profile.html", {"user": request.user})
+    context = {"user": request.user}
+    return render(request, "accounts/profile.html", context)

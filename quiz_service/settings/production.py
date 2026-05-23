@@ -1,7 +1,5 @@
 from decouple import config
 
-from .base import *
-
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
@@ -14,14 +12,14 @@ DATABASES = {
         "PASSWORD": config("DB_PASSWORD"),
         "HOST": config("DB_HOST"),
         "PORT": config("DB_PORT", default="5432"),
-    }
+    },
 }
 
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": config("REDIS_URL"),
-    }
+    },
 }
 
 SECURE_SSL_REDIRECT = True
