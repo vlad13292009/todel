@@ -126,3 +126,30 @@ class AnswerVariant(models.Model):
 
     def __str__(self):
         return f"{self.text[:30]}... {'✓' if self.is_correct else ''}"
+
+from django.conf import settings
+from django.db import models
+from django.contrib.auth.models import User
+
+class QuestionTemplate(models.Model):
+    ANSWER_TYPE_SINGLE_CHOICE = 'single'
+    ANSWER_TYPE_MULTI_CHOICE = 'multi'
+    ANSWER_TYPE_TEXT = 'text'
+    ANSWER_TYPE_CHOICES = [
+        (ANSWER_TYPE_SINGLE_CHOICE, 'Single Choice'),
+        (ANSWER_TYPE_MULTI_CHOICE, 'Multi Choice'),
+        (ANSWER_TYPE_TEXT, 'Text Input'),
+    ]
+
+    text = models.TextField()
+    answer_type = models.CharField(max_length=10, choices=ANSWER_TYPE_CHOICES)
+    options = models.JSONField(blank=True, null=True)
+    correct_answer = models.JSONField(blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question_templates')
+    is_public = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.text[:50] + '...' if len(self.text) > 50 else self.text

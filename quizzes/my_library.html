@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Моя библиотека вопросов{% endblock %}
+
+{% block content %}
+<h1>Моя библиотека вопросов</h1>
+
+<form method="get">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" name="q" class="form-control" placeholder="Поиск по тексту вопроса..." value="{{ current_query }}">
+        </div>
+        <div class="col-md-3">
+            <select name="answer_type" class="form-control">
+                <option value="">Все типы ответов</option>
+                {% for type_val, type_name in answer_type_choices %}
+                    <option value="{{ type_val }}" {% if current_filter_answer_type == type_val %}selected{% endif %}>{{ type_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select name="sort_by" class="form-control">
+                <option value="-created_at" {% if current_sort_by == '-created_at' %}selected{% endif %}>Новые сначала</option>
+                <option value="created_at" {% if current_sort_by == 'created_at' %}selected{% endif %}>Старые сначала</option>
+                <option value="text" {% if current_sort_by == 'text' %}selected{% endif %}>По названию (А-Я)</option>
+                <option value="-text" {% if current_sort_by == '-text' %}selected{% endif %}>По названию (Я-А)</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary">Применить</button>
+        </div>
+    </div>
+</form>
+<br>
+
+{% if templates %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Вопрос</th>
+                <th>Тип ответа</th>
+                <th>Дата создания</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for template in templates %}
+            <tr>
+                <td>{{ template.text|truncatechars:50 }}</td>
+                <td>{{ template.get_answer_type_display }}</td>
+                <td>{{ template.created_at|date:"Y-m-d H:i" }}</td>
+                <td>
+                    <button class="btn btn-sm btn-success add-to-quiz-btn" data-template-id="{{ template.id }}" data-bs-toggle="modal" data-bs-target="#addTemplateModal">
+                        Добавить в квиз
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>В вашей библиотеке пока нет вопросов.</p>
+{% endif %}
+
+<div class="modal fade" id="addTemplateModal" tabindex="-1" aria-labelledby="addTemplateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-modal-title" id="addTemplateModalLabel">Добавить в квиз</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Выберите квиз, в который вы хотите добавить этот вопрос:</p>
+        <select id="quiz_select_modal" class="form-control">
+            <option value="">-- Выберите квиз --</option>
+            {% comment %}
+            {% for quiz in user_quizzes %} 
+                <option value="{{ quiz.id }}">{{ quiz.title }}</option>
+            {% endfor %}
+            {% endcomment %}
+        </select>
+        <input type="hidden" id="template_id_to_add">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-primary" id="confirm_add_to_quiz">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addButtons = document.querySelectorAll('.add-to-quiz-btn');
+    const templateIdInput = document.getElementById('template_id_to_add');
+    const quizSelect = document.getElementById('quiz_select_modal');
+    const confirmButton = document.getElementById('confirm_add_to_quiz');
+    function loadUserQuizzes() {
+        fetch("{% url 'get_user_quizzes' %}")
+            .then(response => response.json())
+            .then(data => {
+                quizSelect.innerHTML = '<option value="">-- Выберите квиз --</option>';
+                data.forEach(quiz => {
+                    const option = document.createElement('option');
+                    option.value = quiz.id;
+                    option.textContent = quiz.title;
+                    quizSelect.appendChild(option);
+                });
+            });
+    }
+
+    addButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            templateIdInput.value = this.dataset.templateId;
+            loadUserQuizzes();
+        });
+    });
+
+    confirmButton.addEventListener('click', function() {
+        const templateId = templateIdInput.value;
+        const quizId = quizSelect.value;
+
+        if (!quizId) {
+            alert('Пожалуйста, выберите квиз.');
+            return;
+        }
+
+        fetch("{% url 'add_template_to_quiz' %}?template_id=" + templateId + "&quiz_id=" + quizId, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Вопрос успешно добавлен в квиз!');
+                bootstrap.Modal.getInstance(document.getElementById('addTemplateModal')).hide();
+            } else {
+                alert('Ошибка при добавлении вопроса.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Произошла ошибка при добавлении вопроса.');
+        });
+    });
+});
+</script>
+{% endblock %}
