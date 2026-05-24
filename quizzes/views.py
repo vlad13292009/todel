@@ -11,7 +11,9 @@ from django.views.decorators.http import require_POST
 from accounts.decorators import organizer_required
 
 from .forms import AnswerVariantFormSet, QuestionForm, QuizForm
-from .models import AnswerVariant, Question, Quiz
+from .models import AnswerVariant, Question, Quiz, UserAnswer
+from .scoring import ScoringFactory
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -225,3 +227,50 @@ def answer_variant_reorder(request, question_id):
         ),
 
     return JsonResponse({"status": "ok"})
+
+
+@login_required
+@csrf_exempt
+def submit_answer(request, question_id):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    question = get_object_or_404(Question, id=question_id)
+
+    try:
+        data = json.loads(request.body)
+        selected_variants = data.get('selected_variants', [])
+    except json.JSONDecodeError:
+        selected_variants = request.POST.getlist('selected_variants[]')
+
+    strategy = ScoringFactory.get_strategy(question.question_type)
+    score = strategy.calculate(question, selected_variants, question.points)
+    is_correct = score >= question.points
+
+    answer, created = UserAnswer.objects.update_or_create(
+        user=request.user,
+        question=question,
+        defaults={
+            'selected_variants': selected_variants,
+            'score': score,
+            'is_correct': is_correct,
+        }
+    )
+
+    return JsonResponse({
+        'success': True,
+        'score': score,
+        'max_score': question.points,
+        'is_correct': is_correct,
+        'percentage': (score / question.points * 100) if question.points > 0 else 0,
+    })
+
+
+@login_required
+def quiz_take(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id, status='published')
+    questions = quiz.questions.all().order_by('order')
+    return render(request, 'quizzes/quiz_take.html', {
+        'quiz': quiz,
+        'questions': questions,
+    })

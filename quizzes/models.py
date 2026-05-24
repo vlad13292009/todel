@@ -72,9 +72,10 @@ class Question(models.Model):
         validators=[MaxLengthValidator(500)],
     )
     QUESTION_TYPE_CHOICES = [
-        ("single", "Один правильный ответ"),
-        ("multiple", "Несколько правильных ответов"),
-        ("text", "Текстовый ответ"),
+        ('single', 'Один правильный ответ'),
+        ('multiple', 'Несколько правильных ответов'),
+        ('text', 'Текстовый ответ'),
+        ('matching', 'Сопоставление'),
     ]
     question_type = models.CharField(
         max_length=20,
@@ -114,8 +115,8 @@ class Question(models.Model):
         if not variants.filter(is_correct=True).exists():
             raise ValidationError("Должен быть хотя бы один правильный ответ.")
         if (
-            self.question_type == "single"
-            and variants.filter(is_correct=True).count() > 1
+                self.question_type == "single"
+                and variants.filter(is_correct=True).count() > 1
         ):
             raise ValidationError(
                 "Для вопроса с одним правильным ответом может быть только один "
@@ -124,18 +125,14 @@ class Question(models.Model):
 
 
 class AnswerVariant(models.Model):
-    question = models.ForeignKey(
-        Question,
-        on_delete=models.CASCADE,
-        related_name="answer_variants",
-        verbose_name="Вопрос",
-    )
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="answer_variants",
+                                 verbose_name="Вопрос")
     text = models.CharField(max_length=255, verbose_name="Текст ответа")
     is_correct = models.BooleanField(default=False, verbose_name="Правильный ответ")
-    image = models.ImageField(
-        upload_to="answer_images/", blank=True, null=True, verbose_name="Изображение"
-    )
+    image = models.ImageField(upload_to="answer_images/", blank=True, null=True, verbose_name="Изображение")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
+    match_left_id = models.PositiveIntegerField(null=True, blank=True, verbose_name="ID левой части соответствия")
+    match_right_id = models.PositiveIntegerField(null=True, blank=True, verbose_name="ID правой части соответствия")
 
     class Meta:
         verbose_name = "Вариант ответа"
@@ -144,3 +141,18 @@ class AnswerVariant(models.Model):
 
     def __str__(self):
         return f"{self.text[:30]}... {'✓' if self.is_correct else ''}"
+
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='user_answers')
+    selected_variants = models.JSONField(default=list)
+    score = models.FloatField(default=0)
+    is_correct = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['user', 'question']
+
+    def __str__(self):
+        return f"{self.user.email} - {self.question.text[:30]}"
