@@ -38,3 +38,5 @@ docker-compose.override.yml
 .dockerignore
 
 .coverage.*
+
+htmlcov/
