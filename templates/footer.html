@@ -1,0 +1,23 @@
+<footer class="border-t border-white/10 bg-white/5 backdrop-blur-md mt-auto">
+    <div class="container mx-auto px-6 py-10">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <div class="text-lg font-semibold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                    QuizRumble
+                </div>
+                <p class="text-sm text-gray-400 mt-2">Интерактивная платформа знаний</p>
+            </div>
+
+            <div class="flex gap-6 text-sm text-gray-400">
+                <a href="{% url 'about' %}" class="no-underline hover:text-white transition">О проекте</a>
+                <a href="{% url 'contacts' %}" class="no-underline hover:text-white transition">Контакты</a>
+                <a href="{% url 'rules' %}" class="no-underline hover:text-white transition">Правила</a>
+            </div>
+        </div>
+
+        <div class="text-center text-xs text-gray-500 mt-8">
+            &copy; 2026 QuizRumble. Все права защищены.<br>
+            Разработано в рамках учебного проекта МШП
+        </div>
+    </div>
+</footer>
