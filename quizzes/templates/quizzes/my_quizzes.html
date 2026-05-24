@@ -6,9 +6,16 @@
 <div class="max-w-6xl mx-auto">
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-3xl font-bold">Мои квизы</h1>
-        <a href="{% url 'quizzes:quiz_create' %}" class="bg-blue-500 text-white px-4 py-2 rounded">
-            + Создать квиз
-        </a>
+        <div class="flex gap-3">
+            <a href="{% url 'quizzes:import_quiz_page' %}"
+               class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                Импорт квиза
+            </a>
+            <a href="{% url 'quizzes:quiz_create' %}"
+               class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                + Создать квиз
+            </a>
+        </div>
     </div>
 
     {% if quizzes %}
@@ -27,6 +34,13 @@
                     <button type="submit" class="text-green-500">Опубликовать</button>
                 </form>
                 {% endif %}
+            </div>
+            <div class="mt-2 pt-2 border-t border-gray-200">
+                <span class="text-sm text-gray-500 mr-2">Экспорт:</span>
+                <a href="{% url 'quizzes:export_quiz_json' quiz.id %}"
+                   class="text-yellow-600 mr-2 text-sm hover:underline">JSON</a>
+                <a href="{% url 'quizzes:export_quiz_csv' quiz.id %}"
+                   class="text-green-600 text-sm hover:underline">CSV</a>
             </div>
         </div>
         {% endfor %}

@@ -4,13 +4,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db import transaction
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
 from accounts.decorators import organizer_required
 
 from .forms import AnswerVariantFormSet, QuestionForm, QuizForm
+from .import_export import ImportExportFactory
 from .models import AnswerVariant, Question, Quiz
 
 
@@ -222,6 +223,61 @@ def answer_variant_reorder(request, question_id):
     for item in order_data:
         AnswerVariant.objects.filter(id=item["id"], question=question).update(
             order=item["order"]
-        ),
+        )
 
     return JsonResponse({"status": "ok"})
+
+
+@organizer_required
+def export_quiz_json(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id, creator=request.user)
+    handler = ImportExportFactory.get_handler("json")
+    data = handler.export(quiz)
+    from django.http import JsonResponse
+
+    response = JsonResponse(json.loads(data), safe=False)
+    response["Content-Disposition"] = f'attachment; filename="{quiz.title}.json"'
+    return response
+
+
+@organizer_required
+def export_quiz_json(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id, creator=request.user)
+    handler = ImportExportFactory.get_handler("json")
+    data = handler.export(quiz)
+    response = HttpResponse(data, content_type='application/json')
+    response['Content-Disposition'] = f'attachment; filename="{quiz.title}.json"'
+    return response
+
+
+@organizer_required
+def import_quiz(request):
+    if request.method != 'POST':
+        return redirect('quizzes:import_quiz_page')
+
+    file = request.FILES.get('file')
+    fmt = request.POST.get('format')
+
+    if not file or fmt not in ['json', 'csv']:
+        messages.error(request, 'Файл или формат не указан')
+        return redirect('quizzes:import_quiz_page')
+
+    try:
+        handler = ImportExportFactory.get_handler(fmt)
+        content = file.read()
+        is_valid, error = handler.validate(content)
+        if not is_valid:
+            raise Exception(error)
+
+        quiz = handler.import_from_string(content, request.user)
+        messages.success(request, f'Квиз "{quiz.title}" успешно импортирован!')
+        return redirect('quizzes:quiz_edit', quiz_id=quiz.id)
+
+    except Exception as e:
+        messages.error(request, f'Ошибка импорта: {str(e)}')
+        return redirect('quizzes:import_quiz_page')
+
+
+@organizer_required
+def import_quiz_page(request):
+    return render(request, "quizzes/import_quiz.html")

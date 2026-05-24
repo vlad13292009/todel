@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Импорт квиза{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">Импорт квиза</h1>
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        <div>
+            <label class="block mb-2 font-medium">Формат</label>
+            <select name="format" class="w-full p-2 border rounded">
+                <option value="json">JSON</option>
+                <option value="csv">CSV</option>
+            </select>
+        </div>
+        <div>
+            <label class="block mb-2 font-medium">Файл</label>
+            <input type="file" name="file" accept=".json,.csv" required class="w-full p-2 border rounded">
+        </div>
+        <div class="flex gap-4">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Импортировать</button>
+            <a href="{% url 'quizzes:my_quizzes' %}" class="bg-gray-400 text-white px-6 py-2 rounded">Отмена</a>
+        </div>
+    </form>
+    <hr class="my-8">
+    <h2 class="text-xl font-bold mb-2">Пример CSV</h2>
+    <pre class="bg-gray-100 p-4 text-sm overflow-auto">
+quiz_title,question_text,question_type,question_points,variant_text,variant_is_correct
+Мой квиз,Столица Франции?,single,1,Париж,True
+Мой квиз,Столица Франции?,single,1,Берлин,False
+    </pre>
+</div>
+{% endblock %}
