@@ -1,17 +1,41 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Удаление квиза{% endblock %}
 
 {% block content %}
-<div class="max-w-md mx-auto text-center">
-    <h1 class="text-2xl font-bold mb-4">Удалить квиз?</h1>
-    <p class="mb-6">Вы уверены, что хотите удалить "{{ quiz.title }}"?</p>
+<section class="mx-auto w-full max-w-lg" aria-labelledby="page-heading">
+    <div class="relative overflow-hidden rounded-2xl border border-red-500/20 bg-slate-900/80 p-8 shadow-xl shadow-black/30 backdrop-blur-xl">
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-red-600/5"></div>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Да, удалить</button>
-        <a href="{% url 'quizzes:my_quizzes' %}" class="bg-gray-500 text-white px-4 py-2 rounded">Отмена</a>
-    </form>
+        <div class="relative text-center">
+            <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10 ring-1 ring-red-500/20">
+                <svg class="h-8 w-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </div>
 
-</div>
+            <h1 id="page-heading" class="mb-3 text-2xl font-bold text-slate-100">
+                Удалить квиз?
+            </h1>
+            <p class="mb-8 text-base text-slate-400">
+                Вы уверены, что хотите удалить <span class="font-semibold text-slate-200">"{{ quiz.title }}"</span>?<br>
+                <span class="text-xs text-slate-500">Это действие нельзя отменить. Все вопросы и результаты будут безвозвратно удалены.</span>
+            </p>
+
+            <form method="post" class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+                {% csrf_token %}
+                <button type="submit"
+                        class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-red-500/20 transition hover:bg-red-500 hover:shadow-red-500/40 sm:w-auto">
+                    Да, удалить
+                </button>
+                <a href="{% url 'quizzes:my_quizzes' %}"
+                   class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-600/50 bg-slate-800/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-slate-300 transition hover:border-cyan-400/40 hover:text-slate-100 sm:w-auto">
+                    Отмена
+                </a>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
