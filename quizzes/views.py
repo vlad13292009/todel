@@ -11,7 +11,8 @@ from django.views.decorators.http import require_POST
 from accounts.decorators import organizer_required
 
 from .forms import AnswerVariantFormSet, QuestionForm, QuizForm
-from .models import AnswerVariant, Question, Quiz
+from .models import AnswerVariant, Question, Quiz, UserAnswer
+from .scoring import ScoringFactory
 
 
 def index(request):
@@ -32,7 +33,9 @@ def quiz_create(request):
     else:
         form = QuizForm()
     return render(
-        request, "quizzes/quiz_form.html", {"form": form, "title": "Создание квиза"}
+        request,
+        "quizzes/quiz_form.html",
+        {"form": form, "title": "Создание квиза"},
     )
 
 
@@ -108,7 +111,9 @@ def question_create(request, quiz_id):
     if request.method == "POST":
         form = QuestionForm(request.POST, request.FILES)
         formset = AnswerVariantFormSet(
-            request.POST, request.FILES, question_type=request.POST.get("question_type")
+            request.POST,
+            request.FILES,
+            question_type=request.POST.get("question_type"),
         )
 
         if form.is_valid() and formset.is_valid():
@@ -146,7 +151,10 @@ def question_edit(request, quiz_id, question_id):
         form = QuestionForm(request.POST, request.FILES, instance=question)
         q_type = request.POST.get("question_type", question.question_type)
         formset = AnswerVariantFormSet(
-            request.POST, request.FILES, instance=question, question_type=q_type
+            request.POST,
+            request.FILES,
+            instance=question,
+            question_type=q_type,
         )
 
         if form.is_valid() and formset.is_valid():
@@ -158,7 +166,8 @@ def question_edit(request, quiz_id, question_id):
     else:
         form = QuestionForm(instance=question)
         formset = AnswerVariantFormSet(
-            instance=question, question_type=question.question_type
+            instance=question,
+            question_type=question.question_type,
         )
 
     return render(
@@ -221,7 +230,82 @@ def answer_variant_reorder(request, question_id):
 
     for item in order_data:
         AnswerVariant.objects.filter(id=item["id"], question=question).update(
-            order=item["order"]
-        ),
+            order=item["order"],
+        )
 
     return JsonResponse({"status": "ok"})
+
+
+@require_POST
+@login_required
+def submit_answer(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+
+    try:
+        data = json.loads(request.body)
+        raw_answer = data.get("selected_variants")
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Invalid JSON"}, status=400)
+
+    if question.question_type == "single":
+        user_answer = (
+            raw_answer[0] if isinstance(raw_answer, list) and raw_answer else None
+        )
+        if user_answer is None:
+            return JsonResponse({"error": "Выберите вариант ответа"}, status=400)
+
+    elif question.question_type == "multiple":
+        user_answer = raw_answer if isinstance(raw_answer, list) else []
+
+    elif question.question_type == "text":
+        user_answer = (
+            raw_answer[0] if isinstance(raw_answer, list) and raw_answer else ""
+        )
+        if not user_answer or not user_answer.strip():
+            return JsonResponse(
+                {
+                    "success": False,
+                    "error": "Ответ не может быть пустым",
+                    "score": 0,
+                    "max_score": float(question.points),
+                    "is_correct": False,
+                    "percentage": 0,
+                },
+                status=400,
+            )
+
+    elif question.question_type == "matching":
+        user_answer = raw_answer if isinstance(raw_answer, dict) else {}
+
+    else:
+        return JsonResponse({"error": "Unknown question type"}, status=400)
+
+    strategy = ScoringFactory.get_strategy(question.question_type)
+    score = strategy.calculate(question, user_answer, float(question.points))
+    is_correct = score >= question.points
+
+    UserAnswer.objects.update_or_create(
+        user=request.user,
+        question=question,
+        defaults={
+            "selected_variants": (
+                user_answer
+                if isinstance(user_answer, (list, dict))
+                else [user_answer] if user_answer is not None else []
+            ),
+            "score": score,
+            "is_correct": is_correct,
+        },
+    )
+
+    return JsonResponse(
+        {
+            "success": True,
+            "score": float(score),
+            "max_score": float(question.points),
+            "is_correct": is_correct,
+            "percentage": (
+                round(score / question.points * 100, 1) if question.points > 0 else 0
+            ),
+        },
+    )
