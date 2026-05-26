@@ -9,12 +9,17 @@ class Quiz(models.Model):
     title = models.CharField(
         max_length=200,
         validators=[
-            MinLengthValidator(3, message="Название должно содержать минимум 3 символа")
+            MinLengthValidator(
+                3,
+                message="Название должно содержать минимум 3 символа",
+            ),
         ],
         verbose_name="Название",
     )
     description = models.TextField(
-        blank=True, verbose_name="Описание", validators=[MaxLengthValidator(1000)]
+        blank=True,
+        verbose_name="Описание",
+        validators=[MaxLengthValidator(1000)],
     )
     creator = models.ForeignKey(
         CustomUser,
@@ -34,7 +39,10 @@ class Quiz(models.Model):
         verbose_name="Статус",
     )
     image = models.ImageField(
-        upload_to="quiz_covers/", blank=True, null=True, verbose_name="Обложка"
+        upload_to="quiz_covers/",
+        blank=True,
+        null=True,
+        verbose_name="Обложка",
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,11 +60,11 @@ class Quiz(models.Model):
         super().clean()
         if self.status == "published" and self.questions.count() == 0:
             raise ValidationError(
-                "Опубликованный квиз должен содержать хотя бы один вопрос."
+                "Опубликованный квиз должен содержать хотя бы один вопрос.",
             )
         if self.pk and self.questions.count() > 100:
             raise ValidationError(
-                {"title": "Квиз не может содержать более 100 вопросов."}
+                {"title": "Квиз не может содержать более 100 вопросов."},
             )
 
 
@@ -133,7 +141,10 @@ class AnswerVariant(models.Model):
     text = models.CharField(max_length=255, verbose_name="Текст ответа")
     is_correct = models.BooleanField(default=False, verbose_name="Правильный ответ")
     image = models.ImageField(
-        upload_to="answer_images/", blank=True, null=True, verbose_name="Изображение"
+        upload_to="answer_images/",
+        blank=True,
+        null=True,
+        verbose_name="Изображение",
     )
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
@@ -144,3 +155,26 @@ class AnswerVariant(models.Model):
 
     def __str__(self):
         return f"{self.text[:30]}... {'✓' if self.is_correct else ''}"
+
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey(
+        "accounts.CustomUser",
+        on_delete=models.CASCADE,
+        related_name="answers",
+    )
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+        related_name="user_answers",
+    )
+    selected_variants = models.JSONField(default=list)
+    score = models.FloatField(default=0)
+    is_correct = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ["user", "question"]
+
+    def __str__(self):
+        return f"{self.user.email} - {self.question.text[:30]}"
