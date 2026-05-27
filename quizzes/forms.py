@@ -8,7 +8,14 @@ from .models import AnswerVariant, Question, Quiz
 class QuizForm(forms.ModelForm):
     class Meta:
         model = Quiz
-        fields = ["title", "description", "image"]
+        fields = [
+            "title",
+            "description",
+            "image",
+            "logo",
+            "primary_color",
+            "background_image",
+        ]
         widgets = {
             "title": forms.TextInput(
                 attrs={
@@ -35,7 +42,7 @@ class AnswerVariantForm(forms.ModelForm):
         fields = ["text", "is_correct", "order"]
         widgets = {
             "text": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Вариант ответа"}
+                attrs={"class": "form-control", "placeholder": "Вариант ответа"},
             ),
             "is_correct": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "order": forms.HiddenInput(),
@@ -67,7 +74,7 @@ class BaseAnswerVariantFormSet(BaseInlineFormSet):
                 active_forms += 1
                 if text.lower() in texts:
                     raise forms.ValidationError(
-                        "Варианты ответов не должны повторяться."
+                        "Варианты ответов не должны повторяться.",
                     )
                 texts.add(text.lower())
 
@@ -82,7 +89,7 @@ class BaseAnswerVariantFormSet(BaseInlineFormSet):
         if self.question_type == "single" and correct_count > 1:
             raise forms.ValidationError(
                 "Для вопроса типа 'Один правильный ответ' может быть только один "
-                "верный вариант."
+                "верный вариант.",
             )
 
 
@@ -108,7 +115,7 @@ class QuestionForm(forms.ModelForm):
             "question_type": forms.Select(attrs={"class": "form-control"}),
             "points": forms.NumberInput(attrs={"class": "form-control"}),
             "timer": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Необязательно"}
+                attrs={"class": "form-control", "placeholder": "Необязательно"},
             ),
         }
 
