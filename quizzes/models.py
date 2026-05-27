@@ -148,6 +148,17 @@ class AnswerVariant(models.Model):
     )
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
+    match_left_id = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="ID левой части соответствия",
+    )
+    match_right_id = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="ID правой части соответствия",
+    )
+
     class Meta:
         verbose_name = "Вариант ответа"
         verbose_name_plural = "Варианты ответов"
