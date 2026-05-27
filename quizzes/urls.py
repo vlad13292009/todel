@@ -11,11 +11,10 @@ urlpatterns = [
     path("edit/<int:quiz_id>/", views.quiz_edit, name="quiz_edit"),
     path("delete/<int:quiz_id>/", views.quiz_delete, name="quiz_delete"),
     path("publish/<int:quiz_id>/", views.quiz_publish, name="quiz_publish"),
-    path(
-        "question/<int:question_id>/answer/",
-        views.submit_answer,
-        name="submit_answer",
-    ),
+    path("export/<int:quiz_id>/json/", views.export_quiz_json, name="export_quiz_json"),
+    path("export/<int:quiz_id>/csv/", views.export_quiz_csv, name="export_quiz_csv"),
+    path("import/", views.import_quiz, name="import_quiz"),
+    path("import/page/", views.import_quiz_page, name="import_quiz_page"),
     path(
         "quiz/<int:quiz_id>/question/create/",
         views.question_create,
