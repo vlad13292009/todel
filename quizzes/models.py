@@ -44,6 +44,25 @@ class Quiz(models.Model):
         null=True,
         verbose_name="Обложка",
     )
+    logo = models.ImageField(
+        upload_to="quiz_logos/",
+        null=True,
+        blank=True,
+        verbose_name="Логотип",
+    )
+    primary_color = models.CharField(
+        max_length=7,
+        null=True,
+        blank=True,
+        verbose_name="Основной цвет",
+        help_text="В HEX формате, например #FF5733",
+    )
+    background_image = models.ImageField(
+        upload_to="quiz_backgrounds/",
+        null=True,
+        blank=True,
+        verbose_name="Фоновое изображение",
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
