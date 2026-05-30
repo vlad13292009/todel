@@ -31,7 +31,7 @@ def quiz_create(request):
             quiz.status = "draft"
             quiz.save()
             messages.success(request, f'Квиз "{quiz.title}" создан!')
-            return redirect("quizzes:my_quizzes")
+            return redirect("quizzes:quiz_edit", quiz_id=quiz.id)
     else:
         form = QuizForm()
     return render(
@@ -129,7 +129,7 @@ def question_create(request, quiz_id):
 
     return render(
         request,
-        "quizzes/question_form.html",
+        "quizzes/question_edit.html",
         {
             "form": form,
             "formset": formset,
@@ -166,7 +166,7 @@ def question_edit(request, quiz_id, question_id):
 
     return render(
         request,
-        "quizzes/question_form.html",
+        "quizzes/question_edit.html",
         {
             "form": form,
             "formset": formset,

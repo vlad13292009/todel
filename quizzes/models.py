@@ -102,6 +102,7 @@ class Question(models.Model):
         ("single", "Один правильный ответ"),
         ("multiple", "Несколько правильных ответов"),
         ("text", "Текстовый ответ"),
+        ("matching", "Сопоставление"),
     ]
     question_type = models.CharField(
         max_length=20,
@@ -159,6 +160,7 @@ class AnswerVariant(models.Model):
     )
     text = models.CharField(max_length=255, verbose_name="Текст ответа")
     is_correct = models.BooleanField(default=False, verbose_name="Правильный ответ")
+    match_text = models.CharField(max_length=255, blank=True, default="", verbose_name="Текст сопоставления")
     image = models.ImageField(
         upload_to="answer_images/",
         blank=True,

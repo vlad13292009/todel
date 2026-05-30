@@ -20,8 +20,12 @@
 
         <div class="hidden items-center space-x-8 text-sm md:flex">
             <a href="/" class="no-underline text-slate-300 transition hover:text-neon">Главная</a>
-            <a href="#" class="no-underline text-slate-300 transition hover:text-neon">Викторины</a>
-            <a href="#" class="no-underline text-slate-300 transition hover:text-neon">Рейтинг</a>
+            <a href="{% url 'quizzes:index' %}" class="no-underline text-slate-300 transition hover:text-neon">Викторины</a>
+
+            {% if user.is_authenticated and user.role == 'organizer' %}
+            <a href="{% url 'quizzes:my_quizzes' %}" class="no-underline text-slate-300 transition hover:text-neon">Мои квизы</a>
+            <a href="{% url 'quizzes:quiz_create' %}" class="rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-2 font-medium text-white shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5 hover:opacity-90 no-underline">Создать квиз</a>
+            {% endif %}
 
             {% if user.is_authenticated %}
             <a href="{% url 'accounts:profile' %}" class="no-underline text-slate-300 transition hover:text-neon">Профиль</a>
@@ -53,8 +57,12 @@
 
             <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-white/10 bg-slate-950/95 p-4 text-center shadow-2xl backdrop-blur-xl">
                 <a href="/" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Главная</a>
-                <a href="#" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Викторины</a>
-                <a href="#" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Рейтинг</a>
+                <a href="{% url 'quizzes:index' %}" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Викторины</a>
+
+                {% if user.is_authenticated and user.role == 'organizer' %}
+                <a href="{% url 'quizzes:my_quizzes' %}" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Мои квизы</a>
+                <a href="{% url 'quizzes:quiz_create' %}" class="block rounded-xl px-4 py-3 no-underline bg-gradient-to-r from-cyan-500 to-purple-600 font-semibold text-white">Создать квиз</a>
+                {% endif %}
 
                 {% if user.is_authenticated %}
                 <a href="{% url 'accounts:profile' %}" class="block rounded-xl px-4 py-3 text-slate-300 no-underline transition hover:bg-white/5 hover:text-neon">Профиль</a>

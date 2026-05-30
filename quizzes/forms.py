@@ -37,13 +37,21 @@ class QuizForm(forms.ModelForm):
 
 
 class AnswerVariantForm(forms.ModelForm):
+    text = forms.CharField(
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Вариант ответа"}),
+    )
+    match_text = forms.CharField(
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Текст сопоставления"}),
+    )
+
     class Meta:
         model = AnswerVariant
-        fields = ["text", "is_correct", "order"]
+        fields = ["text", "match_text", "is_correct", "order"]
         widgets = {
-            "text": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Вариант ответа"},
-            ),
             "is_correct": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "order": forms.HiddenInput(),
         }
@@ -56,7 +64,8 @@ class BaseAnswerVariantFormSet(BaseInlineFormSet):
 
     def clean(self):
         super().clean()
-        if any(self.errors):
+
+        if self.question_type in ("text", "matching"):
             return
 
         active_forms = 0
@@ -66,7 +75,6 @@ class BaseAnswerVariantFormSet(BaseInlineFormSet):
         for form in self.forms:
             if self.can_delete and self._should_delete_form(form):
                 continue
-
             text = form.cleaned_data.get("text", "").strip()
             is_correct = form.cleaned_data.get("is_correct", False)
 
@@ -80,6 +88,11 @@ class BaseAnswerVariantFormSet(BaseInlineFormSet):
 
             if is_correct:
                 correct_count += 1
+
+        if active_forms > self.max_num:
+            raise forms.ValidationError(
+                f"Максимум {self.max_num} вариантов ответа."
+            )
 
         if active_forms < 2:
             raise forms.ValidationError("Должно быть минимум 2 варианта ответа.")
@@ -98,11 +111,12 @@ AnswerVariantFormSet = inlineformset_factory(
     AnswerVariant,
     form=AnswerVariantForm,
     formset=BaseAnswerVariantFormSet,
-    extra=2,
+    extra=0,
     min_num=2,
     max_num=100,
     can_delete=True,
     validate_min=False,
+    validate_max=True,
 )
 
 
