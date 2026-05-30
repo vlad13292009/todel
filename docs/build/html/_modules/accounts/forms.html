@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>accounts.forms &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">quizrumble</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">accounts.forms</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код accounts.forms</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django</span><span class="w"> </span><span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.forms</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuthenticationForm</span><span class="p">,</span> <span class="n">UserCreationForm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">accounts.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomUser</span>
+
+<span class="n">INPUT_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;w-full rounded-xl border border-cyan-400/20 bg-slate-900/80 px-4 py-3 &quot;</span>
+    <span class="s2">&quot;text-sm text-slate-100 placeholder:text-slate-500 outline-none transition &quot;</span>
+    <span class="s2">&quot;focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/20 &quot;</span>
+    <span class="s2">&quot;disabled:cursor-not-allowed disabled:opacity-60&quot;</span>
+<span class="p">)</span>
+
+<span class="n">PASSWORD_INPUT_CLASSES</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">INPUT_CLASSES</span><span class="si">}</span><span class="s2"> pr-12&quot;</span>
+
+
+<div class="viewcode-block" id="BaseRegistrationForm">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.BaseRegistrationForm">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseRegistrationForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">254</span><span class="p">,</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">EmailInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;your@mail.com&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;maxlength&quot;</span><span class="p">:</span> <span class="s2">&quot;254&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="BaseRegistrationForm.Meta">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.BaseRegistrationForm.Meta">[документация]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CustomUser</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;password1&quot;</span><span class="p">,</span> <span class="s2">&quot;password2&quot;</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="mi">30</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">help_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">TextInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;User_123&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;maxlength&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;password1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">PASSWORD_INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;••••••••&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;new-password&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;minlength&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;password2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">PasswordInput</span><span class="p">(</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">PASSWORD_INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;••••••••&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;new-password&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;minlength&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="BaseRegistrationForm.clean_username">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.BaseRegistrationForm.clean_username">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean_username</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span>
+                <span class="s2">&quot;Имя пользователя должно быть не длиннее 30 символов.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">username</span></div>
+
+
+<div class="viewcode-block" id="BaseRegistrationForm.clean_email">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.BaseRegistrationForm.clean_email">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">254</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;Email должен быть не длиннее 254 символов.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">email</span></div>
+
+
+<div class="viewcode-block" id="BaseRegistrationForm.save">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.BaseRegistrationForm.save">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">commit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">role</span>
+        <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">user</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OrganizerRegistrationForm">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.OrganizerRegistrationForm">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OrganizerRegistrationForm</span><span class="p">(</span><span class="n">BaseRegistrationForm</span><span class="p">):</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;organizer&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ParticipantRegistrationForm">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.ParticipantRegistrationForm">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParticipantRegistrationForm</span><span class="p">(</span><span class="n">BaseRegistrationForm</span><span class="p">):</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;participant&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="CustomLoginForm">
+<a class="viewcode-back" href="../../accounts.html#accounts.forms.CustomLoginForm">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomLoginForm</span><span class="p">(</span><span class="n">AuthenticationForm</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;Имя пользователя&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;maxlength&quot;</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">widget</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="n">PASSWORD_INPUT_CLASSES</span><span class="p">,</span>
+                <span class="s2">&quot;placeholder&quot;</span><span class="p">:</span> <span class="s2">&quot;Пароль&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;autocomplete&quot;</span><span class="p">:</span> <span class="s2">&quot;current-password&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

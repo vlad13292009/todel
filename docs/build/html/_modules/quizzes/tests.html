@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizzes.tests &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">quizrumble</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">quizzes.tests</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код quizzes.tests</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_user_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnswerVariant</span><span class="p">,</span> <span class="n">Question</span><span class="p">,</span> <span class="n">Quiz</span>
+
+<span class="n">User</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="IndexViewTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.IndexViewTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">IndexViewTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IndexViewTests.test_index_accessible_by_anyone">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.IndexViewTests.test_index_accessible_by_anyone">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_index_accessible_by_anyone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="IndexViewTests.test_index_accessible_by_authenticated">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.IndexViewTests.test_index_accessible_by_authenticated">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_index_accessible_by_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;u@e.com&quot;</span><span class="p">,</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass12345!&quot;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;participant&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuizCRUDPermissionMixin">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCRUDPermissionMixin">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuizCRUDPermissionMixin</span><span class="p">:</span>
+    <span class="n">_user_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_unique_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">):</span>
+        <span class="n">QuizCRUDPermissionMixin</span><span class="o">.</span><span class="n">_user_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">QuizCRUDPermissionMixin</span><span class="o">.</span><span class="n">_user_counter</span><span class="si">}</span><span class="s2">@example.com&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_organizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;org&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span>
+                                        <span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unique_email</span><span class="p">(</span><span class="s2">&quot;org&quot;</span><span class="p">),</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass12345!&quot;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;organizer&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_participant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;part&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span>
+                                        <span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_unique_email</span><span class="p">(</span><span class="s2">&quot;part&quot;</span><span class="p">),</span>
+                                        <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass12345!&quot;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;participant&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_quiz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">creator</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Test Quiz&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quiz</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Description&quot;</span><span class="p">,</span>
+                                   <span class="n">creator</span><span class="o">=</span><span class="n">creator</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;draft&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="MyQuizzesTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.MyQuizzesTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyQuizzesTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MyQuizzesTests.test_my_quizzes_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_quizzes_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MyQuizzesTests.test_my_quizzes_participant_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_participant_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_quizzes_participant_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">)),</span>
+                             <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_quizzes_organizer_shows_own_quizzes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/my_quizzes.html&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">quiz</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;quizzes&quot;</span><span class="p">]),</span> <span class="p">[</span><span class="n">quiz</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_my_quizzes_organizer_does_not_see_others_quizzes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;org2&quot;</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Other Quiz&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotContains</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;Other Quiz&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;quizzes&quot;</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuizCreateTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuizCreateTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_get_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_get_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_get_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_get_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_get_organizer_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_organizer_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_get_organizer_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">())</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/quiz_form.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_post_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Desc&quot;</span><span class="p">}),</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_post_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">),</span>
+                                          <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Desc&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_post_organizer_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_organizer_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_organizer_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">),</span>
+                                <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;New Quiz&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description text&quot;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">Quiz</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;New Quiz&quot;</span><span class="p">,</span> <span class="n">creator</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="QuizCreateTests.test_create_post_invalid_data">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_invalid_data">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_invalid_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Quiz</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuizEditTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuizEditTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuizEditTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuizEditTests.test_edit_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.test_edit_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_edit_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizEditTests.test_edit_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.test_edit_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_edit_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizEditTests.test_edit_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.test_edit_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_edit_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizEditTests.test_edit_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.test_edit_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_edit_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/quiz_form.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizEditTests.test_edit_post_owner_updates">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizEditTests.test_edit_post_owner_updates">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_edit_post_owner_updates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Title&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated&quot;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;Updated Title&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="s2">&quot;Updated&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuizDeleteTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuizDeleteTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuizDeleteTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_delete&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuizDeleteTests.test_delete_get_owner_shows_confirm">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_get_owner_shows_confirm">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_get_owner_shows_confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/quiz_confirm_delete.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizDeleteTests.test_delete_post_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_post_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Quiz</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="QuizDeleteTests.test_delete_post_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_post_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizDeleteTests.test_delete_post_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_delete_post_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuizPublishTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuizPublishTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuizPublishTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_publish&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_question_with_answers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quiz</span><span class="p">):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Test Q?&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">is_correct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">is_correct</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">q</span>
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_without_questions_redirects_to_edit">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_without_questions_redirects_to_edit">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_without_questions_redirects_to_edit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">),</span>
+                             <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">]),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_with_questions_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_with_questions_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_with_questions_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_question_with_answers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;published&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuizPublishTests.test_publish_get_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuizPublishTests.test_publish_get_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_publish_get_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">publish_url</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuestionCreateTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuestionCreateTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuestionCreateTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:question_create&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_get_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_get_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_get_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/question_form.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_post_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Question?&quot;</span><span class="p">,</span> <span class="s2">&quot;question_type&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-TOTAL_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-INITIAL_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-MIN_NUM_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-MAX_NUM_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-0-text&quot;</span><span class="p">:</span> <span class="s2">&quot;Correct Answer&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-0-is_correct&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-0-order&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-1-text&quot;</span><span class="p">:</span> <span class="s2">&quot;Wrong Answer&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-1-is_correct&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-1-order&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">]),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">questions</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">questions</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;Test Question?&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">questions</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">answer_variants</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_post_question_limit">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_question_limit">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_question_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+            <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Q</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Overflow Q&quot;</span><span class="p">,</span> <span class="s2">&quot;question_type&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">]),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">questions</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionCreateTests.test_create_post_invalid_data">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_invalid_data">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_create_post_invalid_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_url</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;question_type&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">questions</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuestionEditTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuestionEditTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuestionEditTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Original Q&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:question_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuestionEditTests.test_qedit_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qedit_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionEditTests.test_qedit_participant_forbidden">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_participant_forbidden">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qedit_participant_forbidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionEditTests.test_qedit_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qedit_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionEditTests.test_qedit_get_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_get_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qedit_get_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/question_form.html&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;is_create&quot;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuestionEditTests.test_qedit_post_owner_updates">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_post_owner_updates">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qedit_post_owner_updates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">av1</span> <span class="o">=</span> <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">is_correct</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">av2</span> <span class="o">=</span> <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">is_correct</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated Question&quot;</span><span class="p">,</span> <span class="s2">&quot;question_type&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-TOTAL_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-INITIAL_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-MIN_NUM_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-MAX_NUM_FORMS&quot;</span><span class="p">:</span> <span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-0-id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av1</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="s2">&quot;answer_variants-0-question&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="s2">&quot;answer_variants-0-text&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-0-is_correct&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-0-order&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;answer_variants-1-id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">av2</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="s2">&quot;answer_variants-1-question&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="s2">&quot;answer_variants-1-text&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-1-is_correct&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;answer_variants-1-order&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edit_url</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">]),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;Updated Question&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuestionDeleteTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuestionDeleteTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuestionDeleteTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;To Delete&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:question_delete&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuestionDeleteTests.test_qdelete_get_owner_shows_confirm">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_get_owner_shows_confirm">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qdelete_get_owner_shows_confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="s2">&quot;quizzes/question_confirm_delete.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionDeleteTests.test_qdelete_post_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qdelete_post_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_edit&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">]),</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="QuestionDeleteTests.test_qdelete_post_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qdelete_post_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                             <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionDeleteTests.test_qdelete_post_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qdelete_post_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qdelete_last_question_downgrades_published_quiz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;published&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="s2">&quot;draft&quot;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QuestionReorderTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuestionReorderTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="QuestionReorderTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q1</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q2</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Q2&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:question_reorder&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QuestionReorderTests.test_qreorder_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qreorder_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span>
+                             <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">),</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionReorderTests.test_qreorder_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qreorder_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span>
+                                          <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionReorderTests.test_qreorder_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qreorder_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+                                       <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">q2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]})</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">)[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span> <span class="s2">&quot;ok&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q2</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q1</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q2</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QuestionReorderTests.test_qreorder_get_not_allowed">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_get_not_allowed">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_qreorder_get_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">405</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AnswerVariantReorderTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnswerVariantReorderTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="AnswerVariantReorderTests.setUp">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">owner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quiz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_quiz</span><span class="p">(</span><span class="n">creator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">quiz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiz</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Q?&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">=</span> <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a2</span> <span class="o">=</span> <span class="n">AnswerVariant</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:answer_variant_reorder&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="AnswerVariantReorderTests.test_avreorder_anonymous_redirects">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_avreorder_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span>
+                             <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">),</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AnswerVariantReorderTests.test_avreorder_other_organizer_not_found">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_other_organizer_not_found">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_avreorder_other_organizer_not_found</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_organizer</span><span class="p">(</span><span class="s2">&quot;other&quot;</span><span class="p">))</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span>
+                                          <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AnswerVariantReorderTests.test_avreorder_owner_success">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_owner_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_avreorder_owner_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+                                       <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">a2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]})</span>
+        <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">)[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span> <span class="s2">&quot;ok&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a2</span><span class="o">.</span><span class="n">refresh_from_db</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a1</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a2</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AnswerVariantReorderTests.test_avreorder_get_not_allowed">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_get_not_allowed">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_avreorder_get_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reorder_url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">405</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PermissionTests">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.PermissionTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PermissionTests</span><span class="p">(</span><span class="n">QuizCRUDPermissionMixin</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PermissionTests.test_participant_gets_403_on_organizer_views">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.PermissionTests.test_participant_gets_403_on_organizer_views">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_participant_gets_403_on_organizer_views</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="p">[</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">)]:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">403</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PermissionTests.test_anonymous_gets_redirected_to_login">
+<a class="viewcode-back" href="../../quizzes.html#quizzes.tests.PermissionTests.test_anonymous_gets_redirected_to_login">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_anonymous_gets_redirected_to_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">login_url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="p">[</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:quiz_create&quot;</span><span class="p">)]:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">subTest</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">login_url</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                     <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

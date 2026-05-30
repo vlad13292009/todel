@@ -1,0 +1,1697 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizzes package &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="quizzes.import_export package" href="quizzes.import_export.html" />
+    <link rel="prev" title="quiz_stat.migrations package" href="quiz_stat.migrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">quizrumble</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accounts.html">accounts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html">quiz_service package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html">quiz_sessions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html">quiz_stat package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">quizzes package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html">quizzes.import_export package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html">quizzes.migrations package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html">quizzes.scoring package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.admin">quizzes.admin module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.admin.AnswerVariantAdmin"><code class="docutils literal notranslate"><span class="pre">AnswerVariantAdmin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.admin.AnswerVariantInline"><code class="docutils literal notranslate"><span class="pre">AnswerVariantInline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.admin.QuestionAdmin"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.admin.QuizAdmin"><code class="docutils literal notranslate"><span class="pre">QuizAdmin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.apps">quizzes.apps module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.apps.QuizzesConfig"><code class="docutils literal notranslate"><span class="pre">QuizzesConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.forms">quizzes.forms module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.forms.AnswerVariantForm"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.forms.BaseAnswerVariantFormSet"><code class="docutils literal notranslate"><span class="pre">BaseAnswerVariantFormSet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.forms.QuestionForm"><code class="docutils literal notranslate"><span class="pre">QuestionForm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.forms.QuizForm"><code class="docutils literal notranslate"><span class="pre">QuizForm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.models">quizzes.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.models.AnswerVariant"><code class="docutils literal notranslate"><span class="pre">AnswerVariant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.models.Question"><code class="docutils literal notranslate"><span class="pre">Question</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.models.Quiz"><code class="docutils literal notranslate"><span class="pre">Quiz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.models.UserAnswer"><code class="docutils literal notranslate"><span class="pre">UserAnswer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.tests">quizzes.tests module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.AnswerVariantReorderTests"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.IndexViewTests"><code class="docutils literal notranslate"><span class="pre">IndexViewTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.MyQuizzesTests"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.PermissionTests"><code class="docutils literal notranslate"><span class="pre">PermissionTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuestionCreateTests"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuestionDeleteTests"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuestionEditTests"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuestionReorderTests"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin"><code class="docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuizCreateTests"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuizDeleteTests"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuizEditTests"><code class="docutils literal notranslate"><span class="pre">QuizEditTests</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.tests.QuizPublishTests"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.urls">quizzes.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes.views">quizzes.views module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.answer_variant_reorder"><code class="docutils literal notranslate"><span class="pre">answer_variant_reorder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.export_quiz_csv"><code class="docutils literal notranslate"><span class="pre">export_quiz_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.export_quiz_json"><code class="docutils literal notranslate"><span class="pre">export_quiz_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.import_quiz"><code class="docutils literal notranslate"><span class="pre">import_quiz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.import_quiz_page"><code class="docutils literal notranslate"><span class="pre">import_quiz_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.my_quizzes"><code class="docutils literal notranslate"><span class="pre">my_quizzes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.question_create"><code class="docutils literal notranslate"><span class="pre">question_create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.question_delete"><code class="docutils literal notranslate"><span class="pre">question_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.question_edit"><code class="docutils literal notranslate"><span class="pre">question_edit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.question_reorder"><code class="docutils literal notranslate"><span class="pre">question_reorder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.quiz_create"><code class="docutils literal notranslate"><span class="pre">quiz_create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.quiz_delete"><code class="docutils literal notranslate"><span class="pre">quiz_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.quiz_edit"><code class="docutils literal notranslate"><span class="pre">quiz_edit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quizzes.views.quiz_publish"><code class="docutils literal notranslate"><span class="pre">quiz_publish()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-quizzes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test_setup.html">test_setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">quizrumble</a></li>
+      <li class="breadcrumb-item active">quizzes package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quizzes.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quizzes-package">
+<h1>quizzes package<a class="headerlink" href="#quizzes-package" title="Ссылка на этот заголовок"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Ссылка на этот заголовок"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quizzes.import_export.html">quizzes.import_export package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.base">quizzes.import_export.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.base.BaseHandler"><code class="docutils literal notranslate"><span class="pre">BaseHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.base.BaseHandler.export"><code class="docutils literal notranslate"><span class="pre">BaseHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.base.BaseHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">BaseHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.base.BaseHandler.validate"><code class="docutils literal notranslate"><span class="pre">BaseHandler.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.csv_handler">quizzes.import_export.csv_handler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.csv_handler.CSVHandler"><code class="docutils literal notranslate"><span class="pre">CSVHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.csv_handler.CSVHandler.export"><code class="docutils literal notranslate"><span class="pre">CSVHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.csv_handler.CSVHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">CSVHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.csv_handler.CSVHandler.validate"><code class="docutils literal notranslate"><span class="pre">CSVHandler.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.factory">quizzes.import_export.factory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.factory.ImportExportFactory"><code class="docutils literal notranslate"><span class="pre">ImportExportFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.factory.ImportExportFactory.get_handler"><code class="docutils literal notranslate"><span class="pre">ImportExportFactory.get_handler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.json_handler">quizzes.import_export.json_handler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.json_handler.JSONHandler"><code class="docutils literal notranslate"><span class="pre">JSONHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.json_handler.JSONHandler.export"><code class="docutils literal notranslate"><span class="pre">JSONHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.json_handler.JSONHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">JSONHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.json_handler.JSONHandler.validate"><code class="docutils literal notranslate"><span class="pre">JSONHandler.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.BaseHandler"><code class="docutils literal notranslate"><span class="pre">BaseHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.BaseHandler.export"><code class="docutils literal notranslate"><span class="pre">BaseHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.BaseHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">BaseHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.BaseHandler.validate"><code class="docutils literal notranslate"><span class="pre">BaseHandler.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.CSVHandler"><code class="docutils literal notranslate"><span class="pre">CSVHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.CSVHandler.export"><code class="docutils literal notranslate"><span class="pre">CSVHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.CSVHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">CSVHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.CSVHandler.validate"><code class="docutils literal notranslate"><span class="pre">CSVHandler.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.ImportExportFactory"><code class="docutils literal notranslate"><span class="pre">ImportExportFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.ImportExportFactory.get_handler"><code class="docutils literal notranslate"><span class="pre">ImportExportFactory.get_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.JSONHandler"><code class="docutils literal notranslate"><span class="pre">JSONHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.JSONHandler.export"><code class="docutils literal notranslate"><span class="pre">JSONHandler.export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.JSONHandler.import_from_string"><code class="docutils literal notranslate"><span class="pre">JSONHandler.import_from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#quizzes.import_export.JSONHandler.validate"><code class="docutils literal notranslate"><span class="pre">JSONHandler.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quizzes.migrations.html">quizzes.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0001_initial">quizzes.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more">quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0003_alter_quiz_title">quizzes.migrations.0003_alter_quiz_title module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0003_alter_quiz_title.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0003_alter_quiz_title.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0003_alter_quiz_title.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0004_useranswer">quizzes.migrations.0004_useranswer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0004_useranswer.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0004_useranswer.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0004_useranswer.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0005_answervariant_match_left_id_and_more">quizzes.migrations.0005_answervariant_match_left_id_and_more module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0005_answervariant_match_left_id_and_more.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0005_answervariant_match_left_id_and_more.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0005_answervariant_match_left_id_and_more.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color">quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quizzes.scoring.html">quizzes.scoring package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.base">quizzes.scoring.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.base.BaseScoringStrategy"><code class="docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.base.BaseScoringStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">BaseScoringStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.factory">quizzes.scoring.factory module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.factory.ScoringFactory"><code class="docutils literal notranslate"><span class="pre">ScoringFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.factory.ScoringFactory.get_strategy"><code class="docutils literal notranslate"><span class="pre">ScoringFactory.get_strategy()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.matching">quizzes.scoring.matching module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.matching.MatchingStrategy"><code class="docutils literal notranslate"><span class="pre">MatchingStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.matching.MatchingStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">MatchingStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.multiple_choice">quizzes.scoring.multiple_choice module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.multiple_choice.MultipleChoiceStrategy"><code class="docutils literal notranslate"><span class="pre">MultipleChoiceStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.multiple_choice.MultipleChoiceStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">MultipleChoiceStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.single_choice">quizzes.scoring.single_choice module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.single_choice.SingleChoiceStrategy"><code class="docutils literal notranslate"><span class="pre">SingleChoiceStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.single_choice.SingleChoiceStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">SingleChoiceStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.text_answer">quizzes.scoring.text_answer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.text_answer.TextAnswerStrategy"><code class="docutils literal notranslate"><span class="pre">TextAnswerStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.text_answer.TextAnswerStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">TextAnswerStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.MatchingStrategy"><code class="docutils literal notranslate"><span class="pre">MatchingStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.MatchingStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">MatchingStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.MultipleChoiceStrategy"><code class="docutils literal notranslate"><span class="pre">MultipleChoiceStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.MultipleChoiceStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">MultipleChoiceStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.ScoringFactory"><code class="docutils literal notranslate"><span class="pre">ScoringFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.ScoringFactory.get_strategy"><code class="docutils literal notranslate"><span class="pre">ScoringFactory.get_strategy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.SingleChoiceStrategy"><code class="docutils literal notranslate"><span class="pre">SingleChoiceStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.SingleChoiceStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">SingleChoiceStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.TextAnswerStrategy"><code class="docutils literal notranslate"><span class="pre">TextAnswerStrategy</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#quizzes.scoring.TextAnswerStrategy.calculate"><code class="docutils literal notranslate"><span class="pre">TextAnswerStrategy.calculate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="module-quizzes.admin">
+<span id="quizzes-admin-module"></span><h2>quizzes.admin module<a class="headerlink" href="#module-quizzes.admin" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantAdmin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.admin.</span></span><span class="sig-name descname"><span class="pre">AnswerVariantAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/admin.html#AnswerVariantAdmin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.admin.AnswerVariantAdmin" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('text',</span> <span class="pre">'question',</span> <span class="pre">'is_correct')</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantAdmin.list_display" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('is_correct',)</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantAdmin.list_filter" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantAdmin.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantAdmin.media" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantInline">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.admin.</span></span><span class="sig-name descname"><span class="pre">AnswerVariantInline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/admin.html#AnswerVariantInline"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.admin.AnswerVariantInline" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">TabularInline</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantInline.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantInline.extra" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantInline.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantInline.media" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.AnswerVariantInline.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#quizzes.admin.AnswerVariantInline.model" title="Ссылка на это определение"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#quizzes.models.AnswerVariant" title="quizzes.models.AnswerVariant"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnswerVariant</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.admin.QuestionAdmin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.admin.</span></span><span class="sig-name descname"><span class="pre">QuestionAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/admin.html#QuestionAdmin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.admin.QuestionAdmin" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuestionAdmin.inlines">
+<span class="sig-name descname"><span class="pre">inlines</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'quizzes.admin.AnswerVariantInline'&gt;]</span></span><a class="headerlink" href="#quizzes.admin.QuestionAdmin.inlines" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuestionAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('text',</span> <span class="pre">'quiz',</span> <span class="pre">'question_type',</span> <span class="pre">'points',</span> <span class="pre">'timer')</span></span><a class="headerlink" href="#quizzes.admin.QuestionAdmin.list_display" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuestionAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('question_type',</span> <span class="pre">'quiz')</span></span><a class="headerlink" href="#quizzes.admin.QuestionAdmin.list_filter" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.admin.QuestionAdmin.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.admin.QuestionAdmin.media" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.admin.QuizAdmin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.admin.</span></span><span class="sig-name descname"><span class="pre">QuizAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/admin.html#QuizAdmin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.admin.QuizAdmin" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuizAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('title',</span> <span class="pre">'creator',</span> <span class="pre">'status',</span> <span class="pre">'created_at')</span></span><a class="headerlink" href="#quizzes.admin.QuizAdmin.list_display" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuizAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('status',</span> <span class="pre">'created_at')</span></span><a class="headerlink" href="#quizzes.admin.QuizAdmin.list_filter" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.admin.QuizAdmin.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.admin.QuizAdmin.media" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.admin.QuizAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('title',)</span></span><a class="headerlink" href="#quizzes.admin.QuizAdmin.search_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.apps">
+<span id="quizzes-apps-module"></span><h2>quizzes.apps module<a class="headerlink" href="#module-quizzes.apps" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.apps.QuizzesConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.apps.</span></span><span class="sig-name descname"><span class="pre">QuizzesConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/apps.html#QuizzesConfig"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.apps.QuizzesConfig" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.apps.QuizzesConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></span><a class="headerlink" href="#quizzes.apps.QuizzesConfig.default_auto_field" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.apps.QuizzesConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'quizzes'</span></span><a class="headerlink" href="#quizzes.apps.QuizzesConfig.name" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.forms">
+<span id="quizzes-forms-module"></span><h2>quizzes.forms module<a class="headerlink" href="#module-quizzes.forms" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.forms.</span></span><span class="sig-name descname"><span class="pre">AnswerVariantForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#AnswerVariantForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.AnswerVariantForm" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/quizzes/forms.html#AnswerVariantForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.Meta" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['text',</span> <span class="pre">'is_correct',</span> <span class="pre">'order']</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.Meta.fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.Meta.model" title="Ссылка на это определение"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#quizzes.models.AnswerVariant" title="quizzes.models.AnswerVariant"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnswerVariant</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'is_correct':</span> <span class="pre">&lt;django.forms.widgets.CheckboxInput</span> <span class="pre">object&gt;,</span> <span class="pre">'order':</span> <span class="pre">&lt;django.forms.widgets.HiddenInput</span> <span class="pre">object&gt;,</span> <span class="pre">'text':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.Meta.widgets" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'is_correct':</span> <span class="pre">&lt;django.forms.fields.BooleanField</span> <span class="pre">object&gt;,</span> <span class="pre">'order':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;,</span> <span class="pre">'text':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.base_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.declared_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.forms.AnswerVariantForm.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.forms.AnswerVariantForm.media" title="Ссылка на это определение"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.BaseAnswerVariantFormSet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.forms.</span></span><span class="sig-name descname"><span class="pre">BaseAnswerVariantFormSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#BaseAnswerVariantFormSet"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.BaseAnswerVariantFormSet" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseInlineFormSet</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.forms.BaseAnswerVariantFormSet.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#BaseAnswerVariantFormSet.clean"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.BaseAnswerVariantFormSet.clean" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook for doing any extra formset-wide cleaning after Form.clean() has
+been called on every form. Any ValidationError raised by this method
+will not be associated with a particular form; it will be accessible
+via formset.non_form_errors()</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.forms.</span></span><span class="sig-name descname"><span class="pre">QuestionForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#QuestionForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuestionForm" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/quizzes/forms.html#QuestionForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuestionForm.Meta" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['text',</span> <span class="pre">'question_type',</span> <span class="pre">'points',</span> <span class="pre">'timer']</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.Meta.fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.Meta.model" title="Ссылка на это определение"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#quizzes.models.Question" title="quizzes.models.Question"><code class="xref py py-class docutils literal notranslate"><span class="pre">Question</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'points':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;,</span> <span class="pre">'question_type':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'text':</span> <span class="pre">&lt;django.forms.widgets.Textarea</span> <span class="pre">object&gt;,</span> <span class="pre">'timer':</span> <span class="pre">&lt;django.forms.widgets.NumberInput</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.Meta.widgets" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'points':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;,</span> <span class="pre">'question_type':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'text':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'timer':</span> <span class="pre">&lt;django.forms.fields.IntegerField</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.base_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.clean_points">
+<span class="sig-name descname"><span class="pre">clean_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#QuestionForm.clean_points"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuestionForm.clean_points" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.clean_timer">
+<span class="sig-name descname"><span class="pre">clean_timer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#QuestionForm.clean_timer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuestionForm.clean_timer" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.declared_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.forms.QuestionForm.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.forms.QuestionForm.media" title="Ссылка на это определение"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.forms.</span></span><span class="sig-name descname"><span class="pre">QuizForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id_%s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_permitted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_required_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/forms.html#QuizForm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuizForm" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.Meta">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/quizzes/forms.html#QuizForm.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.forms.QuizForm.Meta" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['title',</span> <span class="pre">'description',</span> <span class="pre">'image',</span> <span class="pre">'logo',</span> <span class="pre">'primary_color',</span> <span class="pre">'background_image']</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.Meta.fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.Meta.model" title="Ссылка на это определение"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#quizzes.models.Quiz" title="quizzes.models.Quiz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quiz</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'description':</span> <span class="pre">&lt;django.forms.widgets.Textarea</span> <span class="pre">object&gt;,</span> <span class="pre">'title':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.Meta.widgets" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'background_image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'description':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'image':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'logo':</span> <span class="pre">&lt;django.forms.fields.ImageField</span> <span class="pre">object&gt;,</span> <span class="pre">'primary_color':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'title':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.base_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.declared_fields" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quizzes.forms.QuizForm.media">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#quizzes.forms.QuizForm.media" title="Ссылка на это определение"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.models">
+<span id="quizzes-models-module"></span><h2>quizzes.models module<a class="headerlink" href="#module-quizzes.models" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.models.</span></span><span class="sig-name descname"><span class="pre">AnswerVariant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_correct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_left_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match_right_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#AnswerVariant"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.AnswerVariant" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.DoesNotExist" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.MultipleObjectsReturned" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.image" title="Ссылка на это определение"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.is_correct">
+<span class="sig-name descname"><span class="pre">is_correct</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.is_correct" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.match_left_id">
+<span class="sig-name descname"><span class="pre">match_left_id</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.match_left_id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.match_right_id">
+<span class="sig-name descname"><span class="pre">match_right_id</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.match_right_id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.objects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.order">
+<span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.order" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.participantanswer_set">
+<span class="sig-name descname"><span class="pre">participantanswer_set</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.participantanswer_set" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.question" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.question_id">
+<span class="sig-name descname"><span class="pre">question_id</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.question_id" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.AnswerVariant.text">
+<span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#quizzes.models.AnswerVariant.text" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.models.Question">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.models.</span></span><span class="sig-name descname"><span class="pre">Question</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#Question"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.Question" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.Question.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzes.models.Question.DoesNotExist" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.Question.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzes.models.Question.MultipleObjectsReturned" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.QUESTION_TYPE_CHOICES">
+<span class="sig-name descname"><span class="pre">QUESTION_TYPE_CHOICES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('single',</span> <span class="pre">'Один</span> <span class="pre">правильный</span> <span class="pre">ответ'),</span> <span class="pre">('multiple',</span> <span class="pre">'Несколько</span> <span class="pre">правильных</span> <span class="pre">ответов'),</span> <span class="pre">('text',</span> <span class="pre">'Текстовый</span> <span class="pre">ответ')]</span></span><a class="headerlink" href="#quizzes.models.Question.QUESTION_TYPE_CHOICES" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.answer_variants">
+<span class="sig-name descname"><span class="pre">answer_variants</span></span><a class="headerlink" href="#quizzes.models.Question.answer_variants" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Question.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#Question.clean"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.Question.clean" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook for doing any extra model-wide validation after clean() has been
+called on every field by self.clean_fields. Any ValidationError raised
+by this method will not be associated with a particular field; it will
+have a special-case association with the field defined by NON_FIELD_ERRORS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Question.get_question_type_display">
+<span class="sig-name descname"><span class="pre">get_question_type_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.CharField:</span> <span class="pre">question_type&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Question.get_question_type_display" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzes.models.Question.id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#quizzes.models.Question.image" title="Ссылка на это определение"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#quizzes.models.Question.objects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.order">
+<span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#quizzes.models.Question.order" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.participantanswer_set">
+<span class="sig-name descname"><span class="pre">participantanswer_set</span></span><a class="headerlink" href="#quizzes.models.Question.participantanswer_set" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.points">
+<span class="sig-name descname"><span class="pre">points</span></span><a class="headerlink" href="#quizzes.models.Question.points" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.question_type">
+<span class="sig-name descname"><span class="pre">question_type</span></span><a class="headerlink" href="#quizzes.models.Question.question_type" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.quiz">
+<span class="sig-name descname"><span class="pre">quiz</span></span><a class="headerlink" href="#quizzes.models.Question.quiz" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.quiz_id">
+<span class="sig-name descname"><span class="pre">quiz_id</span></span><a class="headerlink" href="#quizzes.models.Question.quiz_id" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.text">
+<span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#quizzes.models.Question.text" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.timer">
+<span class="sig-name descname"><span class="pre">timer</span></span><a class="headerlink" href="#quizzes.models.Question.timer" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Question.user_answers">
+<span class="sig-name descname"><span class="pre">user_answers</span></span><a class="headerlink" href="#quizzes.models.Question.user_answers" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.models.Quiz">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.models.</span></span><span class="sig-name descname"><span class="pre">Quiz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_at</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">updated_at</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#Quiz"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.Quiz" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzes.models.Quiz.DoesNotExist" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzes.models.Quiz.MultipleObjectsReturned" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.STATUS_CHOICES">
+<span class="sig-name descname"><span class="pre">STATUS_CHOICES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('draft',</span> <span class="pre">'Черновик'),</span> <span class="pre">('published',</span> <span class="pre">'Опубликован'),</span> <span class="pre">('archived',</span> <span class="pre">'Архивный')]</span></span><a class="headerlink" href="#quizzes.models.Quiz.STATUS_CHOICES" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.background_image">
+<span class="sig-name descname"><span class="pre">background_image</span></span><a class="headerlink" href="#quizzes.models.Quiz.background_image" title="Ссылка на это определение"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#Quiz.clean"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.Quiz.clean" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook for doing any extra model-wide validation after clean() has been
+called on every field by self.clean_fields. Any ValidationError raised
+by this method will not be associated with a particular field; it will
+have a special-case association with the field defined by NON_FIELD_ERRORS.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><a class="headerlink" href="#quizzes.models.Quiz.created_at" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.creator">
+<span class="sig-name descname"><span class="pre">creator</span></span><a class="headerlink" href="#quizzes.models.Quiz.creator" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.creator_id">
+<span class="sig-name descname"><span class="pre">creator_id</span></span><a class="headerlink" href="#quizzes.models.Quiz.creator_id" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#quizzes.models.Quiz.description" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.get_next_by_created_at">
+<span class="sig-name descname"><span class="pre">get_next_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Quiz.get_next_by_created_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.get_next_by_updated_at">
+<span class="sig-name descname"><span class="pre">get_next_by_updated_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">updated_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Quiz.get_next_by_updated_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.get_previous_by_created_at">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Quiz.get_previous_by_created_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.get_previous_by_updated_at">
+<span class="sig-name descname"><span class="pre">get_previous_by_updated_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">updated_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Quiz.get_previous_by_updated_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.get_status_display">
+<span class="sig-name descname"><span class="pre">get_status_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.CharField:</span> <span class="pre">status&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.Quiz.get_status_display" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzes.models.Quiz.id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.image">
+<span class="sig-name descname"><span class="pre">image</span></span><a class="headerlink" href="#quizzes.models.Quiz.image" title="Ссылка на это определение"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.logo">
+<span class="sig-name descname"><span class="pre">logo</span></span><a class="headerlink" href="#quizzes.models.Quiz.logo" title="Ссылка на это определение"></a></dt>
+<dd><p>Just like the FileDescriptor, but for ImageFields. The only difference is
+assigning the width/height to the width_field/height_field, if appropriate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#quizzes.models.Quiz.objects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.primary_color">
+<span class="sig-name descname"><span class="pre">primary_color</span></span><a class="headerlink" href="#quizzes.models.Quiz.primary_color" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.questions">
+<span class="sig-name descname"><span class="pre">questions</span></span><a class="headerlink" href="#quizzes.models.Quiz.questions" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.sessions">
+<span class="sig-name descname"><span class="pre">sessions</span></span><a class="headerlink" href="#quizzes.models.Quiz.sessions" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#quizzes.models.Quiz.status" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#quizzes.models.Quiz.title" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.Quiz.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><a class="headerlink" href="#quizzes.models.Quiz.updated_at" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.models.</span></span><span class="sig-name descname"><span class="pre">UserAnswer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_variants</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_correct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_at</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/models.html#UserAnswer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.models.UserAnswer" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.DoesNotExist">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.DoesNotExist" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.MultipleObjectsReturned">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.MultipleObjectsReturned" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.created_at" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.get_next_by_created_at">
+<span class="sig-name descname"><span class="pre">get_next_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.UserAnswer.get_next_by_created_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.get_previous_by_created_at">
+<span class="sig-name descname"><span class="pre">get_previous_by_created_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created_at&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quizzes.models.UserAnswer.get_previous_by_created_at" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.id" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.is_correct">
+<span class="sig-name descname"><span class="pre">is_correct</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.is_correct" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.objects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.question">
+<span class="sig-name descname"><span class="pre">question</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.question" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.question_id">
+<span class="sig-name descname"><span class="pre">question_id</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.question_id" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.score">
+<span class="sig-name descname"><span class="pre">score</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.score" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.selected_variants">
+<span class="sig-name descname"><span class="pre">selected_variants</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.selected_variants" title="Ссылка на это определение"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.user">
+<span class="sig-name descname"><span class="pre">user</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.user" title="Ссылка на это определение"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quizzes.models.UserAnswer.user_id">
+<span class="sig-name descname"><span class="pre">user_id</span></span><a class="headerlink" href="#quizzes.models.UserAnswer.user_id" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.tests">
+<span id="quizzes-tests-module"></span><h2>quizzes.tests module<a class="headerlink" href="#module-quizzes.tests" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">AnswerVariantReorderTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests.test_avreorder_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_avreorder_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests.test_avreorder_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests.test_avreorder_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests.test_avreorder_get_not_allowed">
+<span class="sig-name descname"><span class="pre">test_avreorder_get_not_allowed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests.test_avreorder_get_not_allowed"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests.test_avreorder_get_not_allowed" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests.test_avreorder_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_avreorder_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests.test_avreorder_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests.test_avreorder_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.AnswerVariantReorderTests.test_avreorder_owner_success">
+<span class="sig-name descname"><span class="pre">test_avreorder_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#AnswerVariantReorderTests.test_avreorder_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.AnswerVariantReorderTests.test_avreorder_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.IndexViewTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">IndexViewTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#IndexViewTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.IndexViewTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.IndexViewTests.test_index_accessible_by_anyone">
+<span class="sig-name descname"><span class="pre">test_index_accessible_by_anyone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#IndexViewTests.test_index_accessible_by_anyone"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.IndexViewTests.test_index_accessible_by_anyone" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.IndexViewTests.test_index_accessible_by_authenticated">
+<span class="sig-name descname"><span class="pre">test_index_accessible_by_authenticated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#IndexViewTests.test_index_accessible_by_authenticated"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.IndexViewTests.test_index_accessible_by_authenticated" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.MyQuizzesTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">MyQuizzesTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#MyQuizzesTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.MyQuizzesTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.MyQuizzesTests.test_my_quizzes_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_my_quizzes_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#MyQuizzesTests.test_my_quizzes_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.MyQuizzesTests.test_my_quizzes_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes">
+<span class="sig-name descname"><span class="pre">test_my_quizzes_organizer_does_not_see_others_quizzes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes">
+<span class="sig-name descname"><span class="pre">test_my_quizzes_organizer_shows_own_quizzes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.MyQuizzesTests.test_my_quizzes_participant_redirects">
+<span class="sig-name descname"><span class="pre">test_my_quizzes_participant_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#MyQuizzesTests.test_my_quizzes_participant_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.MyQuizzesTests.test_my_quizzes_participant_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.PermissionTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">PermissionTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#PermissionTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.PermissionTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.PermissionTests.test_anonymous_gets_redirected_to_login">
+<span class="sig-name descname"><span class="pre">test_anonymous_gets_redirected_to_login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#PermissionTests.test_anonymous_gets_redirected_to_login"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.PermissionTests.test_anonymous_gets_redirected_to_login" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.PermissionTests.test_participant_gets_403_on_organizer_views">
+<span class="sig-name descname"><span class="pre">test_participant_gets_403_on_organizer_views</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#PermissionTests.test_participant_gets_403_on_organizer_views"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.PermissionTests.test_participant_gets_403_on_organizer_views" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuestionCreateTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_create_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_get_owner_success">
+<span class="sig-name descname"><span class="pre">test_create_get_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_get_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_get_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_create_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_create_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_post_invalid_data">
+<span class="sig-name descname"><span class="pre">test_create_post_invalid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_post_invalid_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_post_invalid_data" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_post_owner_success">
+<span class="sig-name descname"><span class="pre">test_create_post_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_post_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_post_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionCreateTests.test_create_post_question_limit">
+<span class="sig-name descname"><span class="pre">test_create_post_question_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionCreateTests.test_create_post_question_limit"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionCreateTests.test_create_post_question_limit" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuestionDeleteTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.test_qdelete_get_owner_shows_confirm">
+<span class="sig-name descname"><span class="pre">test_qdelete_get_owner_shows_confirm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.test_qdelete_get_owner_shows_confirm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.test_qdelete_get_owner_shows_confirm" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz">
+<span class="sig-name descname"><span class="pre">test_qdelete_last_question_downgrades_published_quiz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.test_qdelete_post_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_qdelete_post_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.test_qdelete_post_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.test_qdelete_post_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.test_qdelete_post_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_qdelete_post_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.test_qdelete_post_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.test_qdelete_post_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionDeleteTests.test_qdelete_post_owner_success">
+<span class="sig-name descname"><span class="pre">test_qdelete_post_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionDeleteTests.test_qdelete_post_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionDeleteTests.test_qdelete_post_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuestionEditTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.test_qedit_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_qedit_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.test_qedit_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.test_qedit_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.test_qedit_get_owner_success">
+<span class="sig-name descname"><span class="pre">test_qedit_get_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.test_qedit_get_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.test_qedit_get_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.test_qedit_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_qedit_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.test_qedit_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.test_qedit_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.test_qedit_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_qedit_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.test_qedit_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.test_qedit_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionEditTests.test_qedit_post_owner_updates">
+<span class="sig-name descname"><span class="pre">test_qedit_post_owner_updates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionEditTests.test_qedit_post_owner_updates"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionEditTests.test_qedit_post_owner_updates" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuestionReorderTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests.test_qreorder_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_qreorder_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests.test_qreorder_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests.test_qreorder_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests.test_qreorder_get_not_allowed">
+<span class="sig-name descname"><span class="pre">test_qreorder_get_not_allowed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests.test_qreorder_get_not_allowed"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests.test_qreorder_get_not_allowed" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests.test_qreorder_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_qreorder_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests.test_qreorder_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests.test_qreorder_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuestionReorderTests.test_qreorder_owner_success">
+<span class="sig-name descname"><span class="pre">test_qreorder_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuestionReorderTests.test_qreorder_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuestionReorderTests.test_qreorder_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCRUDPermissionMixin">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuizCRUDPermissionMixin</span></span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCRUDPermissionMixin"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCRUDPermissionMixin" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuizCreateTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_get_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_create_get_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_get_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_get_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_get_organizer_success">
+<span class="sig-name descname"><span class="pre">test_create_get_organizer_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_get_organizer_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_get_organizer_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_get_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_create_get_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_get_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_get_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_post_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_create_post_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_post_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_post_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_post_invalid_data">
+<span class="sig-name descname"><span class="pre">test_create_post_invalid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_post_invalid_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_post_invalid_data" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_post_organizer_success">
+<span class="sig-name descname"><span class="pre">test_create_post_organizer_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_post_organizer_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_post_organizer_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizCreateTests.test_create_post_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_create_post_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizCreateTests.test_create_post_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizCreateTests.test_create_post_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuizDeleteTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests.test_delete_get_owner_shows_confirm">
+<span class="sig-name descname"><span class="pre">test_delete_get_owner_shows_confirm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests.test_delete_get_owner_shows_confirm"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests.test_delete_get_owner_shows_confirm" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests.test_delete_post_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_delete_post_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests.test_delete_post_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests.test_delete_post_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests.test_delete_post_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_delete_post_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests.test_delete_post_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests.test_delete_post_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizDeleteTests.test_delete_post_owner_success">
+<span class="sig-name descname"><span class="pre">test_delete_post_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizDeleteTests.test_delete_post_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizDeleteTests.test_delete_post_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuizEditTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.test_edit_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_edit_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.test_edit_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.test_edit_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.test_edit_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_edit_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.test_edit_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.test_edit_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.test_edit_owner_success">
+<span class="sig-name descname"><span class="pre">test_edit_owner_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.test_edit_owner_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.test_edit_owner_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.test_edit_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_edit_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.test_edit_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.test_edit_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizEditTests.test_edit_post_owner_updates">
+<span class="sig-name descname"><span class="pre">test_edit_post_owner_updates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizEditTests.test_edit_post_owner_updates"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizEditTests.test_edit_post_owner_updates" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.tests.</span></span><span class="sig-name descname"><span class="pre">QuizPublishTests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.tests.QuizCRUDPermissionMixin" title="quizzes.tests.QuizCRUDPermissionMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.setUp">
+<span class="sig-name descname"><span class="pre">setUp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.setUp"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.setUp" title="Ссылка на это определение"></a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_anonymous_redirects">
+<span class="sig-name descname"><span class="pre">test_publish_anonymous_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_anonymous_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_anonymous_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_get_redirects">
+<span class="sig-name descname"><span class="pre">test_publish_get_redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_get_redirects"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_get_redirects" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_other_organizer_not_found">
+<span class="sig-name descname"><span class="pre">test_publish_other_organizer_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_other_organizer_not_found"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_other_organizer_not_found" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_participant_forbidden">
+<span class="sig-name descname"><span class="pre">test_publish_participant_forbidden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_participant_forbidden"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_participant_forbidden" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_with_questions_success">
+<span class="sig-name descname"><span class="pre">test_publish_with_questions_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_with_questions_success"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_with_questions_success" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.tests.QuizPublishTests.test_publish_without_questions_redirects_to_edit">
+<span class="sig-name descname"><span class="pre">test_publish_without_questions_redirects_to_edit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/tests.html#QuizPublishTests.test_publish_without_questions_redirects_to_edit"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.tests.QuizPublishTests.test_publish_without_questions_redirects_to_edit" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.urls">
+<span id="quizzes-urls-module"></span><h2>quizzes.urls module<a class="headerlink" href="#module-quizzes.urls" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="module-quizzes.views">
+<span id="quizzes-views-module"></span><h2>quizzes.views module<a class="headerlink" href="#module-quizzes.views" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.answer_variant_reorder">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">answer_variant_reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#answer_variant_reorder"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.answer_variant_reorder" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.export_quiz_csv">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">export_quiz_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#export_quiz_csv"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.export_quiz_csv" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.export_quiz_json">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">export_quiz_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#export_quiz_json"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.export_quiz_json" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.import_quiz">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">import_quiz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#import_quiz"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.import_quiz" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.import_quiz_page">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">import_quiz_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#import_quiz_page"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.import_quiz_page" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.index">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#index"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.index" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.my_quizzes">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">my_quizzes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#my_quizzes"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.my_quizzes" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.question_create">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">question_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#question_create"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.question_create" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.question_delete">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">question_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#question_delete"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.question_delete" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.question_edit">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">question_edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">question_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#question_edit"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.question_edit" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.question_reorder">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">question_reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#question_reorder"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.question_reorder" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.quiz_create">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">quiz_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#quiz_create"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.quiz_create" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.quiz_delete">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">quiz_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#quiz_delete"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.quiz_delete" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.quiz_edit">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">quiz_edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#quiz_edit"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.quiz_edit" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quizzes.views.quiz_publish">
+<span class="sig-prename descclassname"><span class="pre">quizzes.views.</span></span><span class="sig-name descname"><span class="pre">quiz_publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiz_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/views.html#quiz_publish"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.views.quiz_publish" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-quizzes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-quizzes" title="Ссылка на этот заголовок"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="quiz_stat.migrations.html" class="btn btn-neutral float-left" title="quiz_stat.migrations package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="quizzes.import_export.html" class="btn btn-neutral float-right" title="quizzes.import_export package" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

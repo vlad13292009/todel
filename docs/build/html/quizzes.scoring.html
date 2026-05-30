@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizzes.scoring package &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="test_setup module" href="test_setup.html" />
+    <link rel="prev" title="quizzes.migrations package" href="quizzes.migrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">quizrumble</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accounts.html">accounts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html">quiz_service package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html">quiz_sessions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html">quiz_stat package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="quizzes.html">quizzes package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="quizzes.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html">quizzes.import_export package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html">quizzes.migrations package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">quizzes.scoring package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.admin">quizzes.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.apps">quizzes.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.forms">quizzes.forms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.models">quizzes.models module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.tests">quizzes.tests module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.urls">quizzes.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes.views">quizzes.views module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#module-quizzes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test_setup.html">test_setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">quizrumble</a></li>
+          <li class="breadcrumb-item"><a href="quizzes.html">quizzes package</a></li>
+      <li class="breadcrumb-item active">quizzes.scoring package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quizzes.scoring.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quizzes-scoring-package">
+<h1>quizzes.scoring package<a class="headerlink" href="#quizzes-scoring-package" title="Ссылка на этот заголовок"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="module-quizzes.scoring.base">
+<span id="quizzes-scoring-base-module"></span><h2>quizzes.scoring.base module<a class="headerlink" href="#module-quizzes.scoring.base" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.base.BaseScoringStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.base.</span></span><span class="sig-name descname"><span class="pre">BaseScoringStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/base.html#BaseScoringStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.base.BaseScoringStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.base.BaseScoringStrategy.calculate">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/base.html#BaseScoringStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.base.BaseScoringStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring.factory">
+<span id="quizzes-scoring-factory-module"></span><h2>quizzes.scoring.factory module<a class="headerlink" href="#module-quizzes.scoring.factory" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.factory.ScoringFactory">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.factory.</span></span><span class="sig-name descname"><span class="pre">ScoringFactory</span></span><a class="reference internal" href="_modules/quizzes/scoring/factory.html#ScoringFactory"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.factory.ScoringFactory" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.factory.ScoringFactory.get_strategy">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/factory.html#ScoringFactory.get_strategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.factory.ScoringFactory.get_strategy" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring.matching">
+<span id="quizzes-scoring-matching-module"></span><h2>quizzes.scoring.matching module<a class="headerlink" href="#module-quizzes.scoring.matching" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.matching.MatchingStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.matching.</span></span><span class="sig-name descname"><span class="pre">MatchingStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/matching.html#MatchingStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.matching.MatchingStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.matching.MatchingStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/matching.html#MatchingStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.matching.MatchingStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring.multiple_choice">
+<span id="quizzes-scoring-multiple-choice-module"></span><h2>quizzes.scoring.multiple_choice module<a class="headerlink" href="#module-quizzes.scoring.multiple_choice" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.multiple_choice.MultipleChoiceStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.multiple_choice.</span></span><span class="sig-name descname"><span class="pre">MultipleChoiceStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/multiple_choice.html#MultipleChoiceStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.multiple_choice.MultipleChoiceStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.multiple_choice.MultipleChoiceStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/multiple_choice.html#MultipleChoiceStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.multiple_choice.MultipleChoiceStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring.single_choice">
+<span id="quizzes-scoring-single-choice-module"></span><h2>quizzes.scoring.single_choice module<a class="headerlink" href="#module-quizzes.scoring.single_choice" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.single_choice.SingleChoiceStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.single_choice.</span></span><span class="sig-name descname"><span class="pre">SingleChoiceStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/single_choice.html#SingleChoiceStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.single_choice.SingleChoiceStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.single_choice.SingleChoiceStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/single_choice.html#SingleChoiceStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.single_choice.SingleChoiceStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring.text_answer">
+<span id="quizzes-scoring-text-answer-module"></span><h2>quizzes.scoring.text_answer module<a class="headerlink" href="#module-quizzes.scoring.text_answer" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.text_answer.TextAnswerStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.text_answer.</span></span><span class="sig-name descname"><span class="pre">TextAnswerStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/text_answer.html#TextAnswerStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.text_answer.TextAnswerStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.text_answer.TextAnswerStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/text_answer.html#TextAnswerStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.text_answer.TextAnswerStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-quizzes.scoring">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-quizzes.scoring" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.MatchingStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.</span></span><span class="sig-name descname"><span class="pre">MatchingStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/matching.html#MatchingStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.MatchingStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.MatchingStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/matching.html#MatchingStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.MatchingStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.MultipleChoiceStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.</span></span><span class="sig-name descname"><span class="pre">MultipleChoiceStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/multiple_choice.html#MultipleChoiceStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.MultipleChoiceStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.MultipleChoiceStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/multiple_choice.html#MultipleChoiceStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.MultipleChoiceStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.ScoringFactory">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.</span></span><span class="sig-name descname"><span class="pre">ScoringFactory</span></span><a class="reference internal" href="_modules/quizzes/scoring/factory.html#ScoringFactory"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.ScoringFactory" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.ScoringFactory.get_strategy">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/factory.html#ScoringFactory.get_strategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.ScoringFactory.get_strategy" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.SingleChoiceStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.</span></span><span class="sig-name descname"><span class="pre">SingleChoiceStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/single_choice.html#SingleChoiceStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.SingleChoiceStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.SingleChoiceStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/single_choice.html#SingleChoiceStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.SingleChoiceStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quizzes.scoring.TextAnswerStrategy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">quizzes.scoring.</span></span><span class="sig-name descname"><span class="pre">TextAnswerStrategy</span></span><a class="reference internal" href="_modules/quizzes/scoring/text_answer.html#TextAnswerStrategy"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.TextAnswerStrategy" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#quizzes.scoring.base.BaseScoringStrategy" title="quizzes.scoring.base.BaseScoringStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseScoringStrategy</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quizzes.scoring.TextAnswerStrategy.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">question</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_answer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/quizzes/scoring/text_answer.html#TextAnswerStrategy.calculate"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#quizzes.scoring.TextAnswerStrategy.calculate" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="quizzes.migrations.html" class="btn btn-neutral float-left" title="quizzes.migrations package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="test_setup.html" class="btn btn-neutral float-right" title="test_setup module" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

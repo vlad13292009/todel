@@ -1,0 +1,787 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quizrumble &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="accounts package" href="accounts.html" />
+    <link rel="prev" title="QuizRumble documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">quizrumble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html">accounts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html">quiz_service package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html">quiz_sessions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html">quiz_stat package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html">quizzes package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_setup.html">test_setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">quizrumble</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quizrumble">
+<h1>quizrumble<a class="headerlink" href="#quizrumble" title="Ссылка на этот заголовок"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">accounts package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.migrations.html">accounts.migrations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.migrations.html#module-accounts.migrations.0001_initial">accounts.migrations.0001_initial module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.migrations.html#module-accounts.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.admin">accounts.admin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin.add_fieldsets"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin.add_fieldsets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin.fieldsets"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin.fieldsets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.admin.CustomUserAdmin.media"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.apps">accounts.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.apps.AccountsConfig"><code class="docutils literal notranslate"><span class="pre">AccountsConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.apps.AccountsConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">AccountsConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.apps.AccountsConfig.name"><code class="docutils literal notranslate"><span class="pre">AccountsConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.decorators">accounts.decorators module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.decorators.organizer_required"><code class="docutils literal notranslate"><span class="pre">organizer_required()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.decorators.participant_required"><code class="docutils literal notranslate"><span class="pre">participant_required()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.decorators.role_required"><code class="docutils literal notranslate"><span class="pre">role_required()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.forms">accounts.forms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.Meta"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.clean_email"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.clean_email()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.clean_username"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.clean_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.media"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.role"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.BaseRegistrationForm.save"><code class="docutils literal notranslate"><span class="pre">BaseRegistrationForm.save()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.forms.CustomLoginForm"><code class="docutils literal notranslate"><span class="pre">CustomLoginForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.CustomLoginForm.base_fields"><code class="docutils literal notranslate"><span class="pre">CustomLoginForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.CustomLoginForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">CustomLoginForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.CustomLoginForm.media"><code class="docutils literal notranslate"><span class="pre">CustomLoginForm.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.forms.OrganizerRegistrationForm"><code class="docutils literal notranslate"><span class="pre">OrganizerRegistrationForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.OrganizerRegistrationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">OrganizerRegistrationForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.OrganizerRegistrationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">OrganizerRegistrationForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.OrganizerRegistrationForm.media"><code class="docutils literal notranslate"><span class="pre">OrganizerRegistrationForm.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.OrganizerRegistrationForm.role"><code class="docutils literal notranslate"><span class="pre">OrganizerRegistrationForm.role</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.forms.ParticipantRegistrationForm"><code class="docutils literal notranslate"><span class="pre">ParticipantRegistrationForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.ParticipantRegistrationForm.base_fields"><code class="docutils literal notranslate"><span class="pre">ParticipantRegistrationForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.ParticipantRegistrationForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">ParticipantRegistrationForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.ParticipantRegistrationForm.media"><code class="docutils literal notranslate"><span class="pre">ParticipantRegistrationForm.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.forms.ParticipantRegistrationForm.role"><code class="docutils literal notranslate"><span class="pre">ParticipantRegistrationForm.role</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.models">accounts.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.models.CustomUser"><code class="docutils literal notranslate"><span class="pre">CustomUser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">CustomUser.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">CustomUser.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.ROLE_CHOICES"><code class="docutils literal notranslate"><span class="pre">CustomUser.ROLE_CHOICES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.answers"><code class="docutils literal notranslate"><span class="pre">CustomUser.answers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.date_joined"><code class="docutils literal notranslate"><span class="pre">CustomUser.date_joined</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.email"><code class="docutils literal notranslate"><span class="pre">CustomUser.email</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.first_name"><code class="docutils literal notranslate"><span class="pre">CustomUser.first_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.get_next_by_date_joined"><code class="docutils literal notranslate"><span class="pre">CustomUser.get_next_by_date_joined()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.get_previous_by_date_joined"><code class="docutils literal notranslate"><span class="pre">CustomUser.get_previous_by_date_joined()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.get_role_display"><code class="docutils literal notranslate"><span class="pre">CustomUser.get_role_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.groups"><code class="docutils literal notranslate"><span class="pre">CustomUser.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.id"><code class="docutils literal notranslate"><span class="pre">CustomUser.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.is_active"><code class="docutils literal notranslate"><span class="pre">CustomUser.is_active</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.is_staff"><code class="docutils literal notranslate"><span class="pre">CustomUser.is_staff</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.is_superuser"><code class="docutils literal notranslate"><span class="pre">CustomUser.is_superuser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.last_login"><code class="docutils literal notranslate"><span class="pre">CustomUser.last_login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.last_name"><code class="docutils literal notranslate"><span class="pre">CustomUser.last_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.logentry_set"><code class="docutils literal notranslate"><span class="pre">CustomUser.logentry_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.participant_sessions"><code class="docutils literal notranslate"><span class="pre">CustomUser.participant_sessions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.password"><code class="docutils literal notranslate"><span class="pre">CustomUser.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.quizzes"><code class="docutils literal notranslate"><span class="pre">CustomUser.quizzes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.role"><code class="docutils literal notranslate"><span class="pre">CustomUser.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.user_permissions"><code class="docutils literal notranslate"><span class="pre">CustomUser.user_permissions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.models.CustomUser.username"><code class="docutils literal notranslate"><span class="pre">CustomUser.username</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.tests">accounts.tests module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests"><code class="docutils literal notranslate"><span class="pre">LoginTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.setUp"><code class="docutils literal notranslate"><span class="pre">LoginTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.test_authenticated_user_redirected_from_login"><code class="docutils literal notranslate"><span class="pre">LoginTests.test_authenticated_user_redirected_from_login()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.test_login_get"><code class="docutils literal notranslate"><span class="pre">LoginTests.test_login_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.test_login_post_invalid"><code class="docutils literal notranslate"><span class="pre">LoginTests.test_login_post_invalid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.test_login_post_success_organizer"><code class="docutils literal notranslate"><span class="pre">LoginTests.test_login_post_success_organizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LoginTests.test_login_post_success_participant"><code class="docutils literal notranslate"><span class="pre">LoginTests.test_login_post_success_participant()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.tests.LogoutTests"><code class="docutils literal notranslate"><span class="pre">LogoutTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LogoutTests.setUp"><code class="docutils literal notranslate"><span class="pre">LogoutTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LogoutTests.test_logout_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">LogoutTests.test_logout_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LogoutTests.test_logout_get_redirects"><code class="docutils literal notranslate"><span class="pre">LogoutTests.test_logout_get_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.LogoutTests.test_logout_post_success"><code class="docutils literal notranslate"><span class="pre">LogoutTests.test_logout_post_success()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.tests.ProfileTests"><code class="docutils literal notranslate"><span class="pre">ProfileTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.ProfileTests.setUp"><code class="docutils literal notranslate"><span class="pre">ProfileTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.ProfileTests.test_profile_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">ProfileTests.test_profile_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.ProfileTests.test_profile_authenticated"><code class="docutils literal notranslate"><span class="pre">ProfileTests.test_profile_authenticated()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests"><code class="docutils literal notranslate"><span class="pre">RegistrationTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_authenticated_user_redirected_from_register_organizer"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_authenticated_user_redirected_from_register_organizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_authenticated_user_redirected_from_register_participant"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_authenticated_user_redirected_from_register_participant()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_register_organizer_get"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_register_organizer_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_register_organizer_post_invalid"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_register_organizer_post_invalid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_register_organizer_post_success"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_register_organizer_post_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_register_participant_get"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_register_participant_get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="accounts.html#accounts.tests.RegistrationTests.test_register_participant_post_success"><code class="docutils literal notranslate"><span class="pre">RegistrationTests.test_register_participant_post_success()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.urls">accounts.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts.views">accounts.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.views.login_view"><code class="docutils literal notranslate"><span class="pre">login_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.views.logout_view"><code class="docutils literal notranslate"><span class="pre">logout_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.views.profile_view"><code class="docutils literal notranslate"><span class="pre">profile_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.views.register_organizer"><code class="docutils literal notranslate"><span class="pre">register_organizer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accounts.html#accounts.views.register_participant"><code class="docutils literal notranslate"><span class="pre">register_participant()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accounts.html#module-accounts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manage.html">manage module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manage.html#manage.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quiz_service.html">quiz_service package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_service.settings.html">quiz_service.settings package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#module-quiz_service.settings.base">quiz_service.settings.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#module-quiz_service.settings.development">quiz_service.settings.development module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#module-quiz_service.settings.production">quiz_service.settings.production module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#module-quiz_service.settings.test">quiz_service.settings.test module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_service.settings.html#module-quiz_service.settings">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#module-quiz_service.asgi">quiz_service.asgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#module-quiz_service.test_patch">quiz_service.test_patch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#module-quiz_service.urls">quiz_service.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#module-quiz_service.wsgi">quiz_service.wsgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_service.html#module-quiz_service">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quiz_sessions.html">quiz_sessions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.migrations.html">quiz_sessions.migrations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.migrations.html#module-quiz_sessions.migrations.0001_initial">quiz_sessions.migrations.0001_initial module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.migrations.html#module-quiz_sessions.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.admin">quiz_sessions.admin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerAdmin"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerAdmin.media"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerAdmin.readonly_fields"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerAdmin.readonly_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerInline"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerInline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerInline.extra"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerInline.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerInline.media"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerInline.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerInline.model"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerInline.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantAnswerInline.readonly_fields"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswerInline.readonly_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin.inlines"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin.inlines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin.media"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.ParticipantSessionAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">ParticipantSessionAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.QuizSessionAdmin"><code class="docutils literal notranslate"><span class="pre">QuizSessionAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.QuizSessionAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">QuizSessionAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.QuizSessionAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">QuizSessionAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.QuizSessionAdmin.media"><code class="docutils literal notranslate"><span class="pre">QuizSessionAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.admin.QuizSessionAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">QuizSessionAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.apps">quiz_sessions.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.apps.QuizSessionsConfig"><code class="docutils literal notranslate"><span class="pre">QuizSessionsConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.apps.QuizSessionsConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">QuizSessionsConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.apps.QuizSessionsConfig.name"><code class="docutils literal notranslate"><span class="pre">QuizSessionsConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.consumers">quiz_sessions.consumers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.LobbyConsumer"><code class="docutils literal notranslate"><span class="pre">LobbyConsumer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.LobbyConsumer.connect"><code class="docutils literal notranslate"><span class="pre">LobbyConsumer.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.LobbyConsumer.disconnect"><code class="docutils literal notranslate"><span class="pre">LobbyConsumer.disconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.LobbyConsumer.lobby_update"><code class="docutils literal notranslate"><span class="pre">LobbyConsumer.lobby_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.LobbyConsumer.receive"><code class="docutils literal notranslate"><span class="pre">LobbyConsumer.receive()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.QuizSessionConsumer"><code class="docutils literal notranslate"><span class="pre">QuizSessionConsumer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.QuizSessionConsumer.connect"><code class="docutils literal notranslate"><span class="pre">QuizSessionConsumer.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.QuizSessionConsumer.disconnect"><code class="docutils literal notranslate"><span class="pre">QuizSessionConsumer.disconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.QuizSessionConsumer.quiz_progress"><code class="docutils literal notranslate"><span class="pre">QuizSessionConsumer.quiz_progress()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.consumers.QuizSessionConsumer.receive"><code class="docutils literal notranslate"><span class="pre">QuizSessionConsumer.receive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.models">quiz_sessions.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.answered_at"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.answered_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.get_next_by_answered_at"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.get_next_by_answered_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.get_previous_by_answered_at"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.get_previous_by_answered_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.id"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.is_correct"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.is_correct</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.objects"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.participant_session"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.participant_session</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.participant_session_id"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.participant_session_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.points_earned"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.points_earned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.question"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.question</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.question_id"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.question_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.selected_answer"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.selected_answer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.selected_answer_id"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.selected_answer_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantAnswer.text_answer"><code class="docutils literal notranslate"><span class="pre">ParticipantAnswer.text_answer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession"><code class="docutils literal notranslate"><span class="pre">ParticipantSession</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.answers"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.answers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.correct_answers_count"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.correct_answers_count</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.finished_at"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.finished_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.get_next_by_joined_at"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.get_next_by_joined_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.get_previous_by_joined_at"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.get_previous_by_joined_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.id"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.joined_at"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.joined_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.objects"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.participant_name"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.participant_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.session"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.session</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.session_id"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.session_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.total_score"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.total_score</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.user"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.ParticipantSession.user_id"><code class="docutils literal notranslate"><span class="pre">ParticipantSession.user_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession"><code class="docutils literal notranslate"><span class="pre">QuizSession</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">QuizSession.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">QuizSession.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.SESSION_STATUS_CHOICES"><code class="docutils literal notranslate"><span class="pre">QuizSession.SESSION_STATUS_CHOICES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.created_at"><code class="docutils literal notranslate"><span class="pre">QuizSession.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.finished_at"><code class="docutils literal notranslate"><span class="pre">QuizSession.finished_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.get_next_by_created_at"><code class="docutils literal notranslate"><span class="pre">QuizSession.get_next_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.get_previous_by_created_at"><code class="docutils literal notranslate"><span class="pre">QuizSession.get_previous_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.get_status_display"><code class="docutils literal notranslate"><span class="pre">QuizSession.get_status_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.id"><code class="docutils literal notranslate"><span class="pre">QuizSession.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.objects"><code class="docutils literal notranslate"><span class="pre">QuizSession.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.participants"><code class="docutils literal notranslate"><span class="pre">QuizSession.participants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.password"><code class="docutils literal notranslate"><span class="pre">QuizSession.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.quiz"><code class="docutils literal notranslate"><span class="pre">QuizSession.quiz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.quiz_id"><code class="docutils literal notranslate"><span class="pre">QuizSession.quiz_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.started_at"><code class="docutils literal notranslate"><span class="pre">QuizSession.started_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.status"><code class="docutils literal notranslate"><span class="pre">QuizSession.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.models.QuizSession.unique_code"><code class="docutils literal notranslate"><span class="pre">QuizSession.unique_code</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.tests">quiz_sessions.tests module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_participant_answer_creation"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_participant_answer_creation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_participant_answer_nullable_fields"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_participant_answer_nullable_fields()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_participant_session_creation_anonymous"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_participant_session_creation_anonymous()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_participant_session_creation_with_user"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_participant_session_creation_with_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_quiz_session_creation"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_quiz_session_creation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_quiz_session_default_status"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_quiz_session_default_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_sessions.html#quiz_sessions.tests.QuizSessionModelTests.test_unique_together_session_user"><code class="docutils literal notranslate"><span class="pre">QuizSessionModelTests.test_unique_together_session_user()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.urls">quiz_sessions.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions.views">quiz_sessions.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_sessions.html#module-quiz_sessions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quiz_stat.html">quiz_stat package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_stat.migrations.html">quiz_stat.migrations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_stat.migrations.html#module-quiz_stat.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.admin">quiz_stat.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.apps">quiz_stat.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_stat.html#quiz_stat.apps.QuizStatConfig"><code class="docutils literal notranslate"><span class="pre">QuizStatConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_stat.html#quiz_stat.apps.QuizStatConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">QuizStatConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quiz_stat.html#quiz_stat.apps.QuizStatConfig.name"><code class="docutils literal notranslate"><span class="pre">QuizStatConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.models">quiz_stat.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.tests">quiz_stat.tests module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quiz_stat.html#quiz_stat.tests.QuizStatAppTests"><code class="docutils literal notranslate"><span class="pre">QuizStatAppTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quiz_stat.html#quiz_stat.tests.QuizStatAppTests.test_app_config"><code class="docutils literal notranslate"><span class="pre">QuizStatAppTests.test_app_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.urls">quiz_stat.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat.views">quiz_stat.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz_stat.html#module-quiz_stat">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quizzes.html">quizzes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.import_export.html">quizzes.import_export package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.base">quizzes.import_export.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.csv_handler">quizzes.import_export.csv_handler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.factory">quizzes.import_export.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export.json_handler">quizzes.import_export.json_handler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.import_export.html#module-quizzes.import_export">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.migrations.html">quizzes.migrations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0001_initial">quizzes.migrations.0001_initial module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more">quizzes.migrations.0002_alter_question_text_alter_question_timer_and_more module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0003_alter_quiz_title">quizzes.migrations.0003_alter_quiz_title module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0004_useranswer">quizzes.migrations.0004_useranswer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0005_answervariant_match_left_id_and_more">quizzes.migrations.0005_answervariant_match_left_id_and_more module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color">quizzes.migrations.0006_quiz_background_image_quiz_logo_quiz_primary_color module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.migrations.html#module-quizzes.migrations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.scoring.html">quizzes.scoring package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.base">quizzes.scoring.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.factory">quizzes.scoring.factory module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.matching">quizzes.scoring.matching module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.multiple_choice">quizzes.scoring.multiple_choice module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.single_choice">quizzes.scoring.single_choice module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring.text_answer">quizzes.scoring.text_answer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.scoring.html#module-quizzes.scoring">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.admin">quizzes.admin module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantAdmin"><code class="docutils literal notranslate"><span class="pre">AnswerVariantAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">AnswerVariantAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">AnswerVariantAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantAdmin.media"><code class="docutils literal notranslate"><span class="pre">AnswerVariantAdmin.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantInline"><code class="docutils literal notranslate"><span class="pre">AnswerVariantInline</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantInline.extra"><code class="docutils literal notranslate"><span class="pre">AnswerVariantInline.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantInline.media"><code class="docutils literal notranslate"><span class="pre">AnswerVariantInline.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.AnswerVariantInline.model"><code class="docutils literal notranslate"><span class="pre">AnswerVariantInline.model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.admin.QuestionAdmin"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuestionAdmin.inlines"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin.inlines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuestionAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuestionAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuestionAdmin.media"><code class="docutils literal notranslate"><span class="pre">QuestionAdmin.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.admin.QuizAdmin"><code class="docutils literal notranslate"><span class="pre">QuizAdmin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuizAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">QuizAdmin.list_display</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuizAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">QuizAdmin.list_filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuizAdmin.media"><code class="docutils literal notranslate"><span class="pre">QuizAdmin.media</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.admin.QuizAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">QuizAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.apps">quizzes.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.apps.QuizzesConfig"><code class="docutils literal notranslate"><span class="pre">QuizzesConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.apps.QuizzesConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">QuizzesConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.apps.QuizzesConfig.name"><code class="docutils literal notranslate"><span class="pre">QuizzesConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.forms">quizzes.forms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.forms.AnswerVariantForm"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.AnswerVariantForm.Meta"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.AnswerVariantForm.base_fields"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.AnswerVariantForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.AnswerVariantForm.media"><code class="docutils literal notranslate"><span class="pre">AnswerVariantForm.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.forms.BaseAnswerVariantFormSet"><code class="docutils literal notranslate"><span class="pre">BaseAnswerVariantFormSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.BaseAnswerVariantFormSet.clean"><code class="docutils literal notranslate"><span class="pre">BaseAnswerVariantFormSet.clean()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm"><code class="docutils literal notranslate"><span class="pre">QuestionForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.Meta"><code class="docutils literal notranslate"><span class="pre">QuestionForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.base_fields"><code class="docutils literal notranslate"><span class="pre">QuestionForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.clean_points"><code class="docutils literal notranslate"><span class="pre">QuestionForm.clean_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.clean_timer"><code class="docutils literal notranslate"><span class="pre">QuestionForm.clean_timer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">QuestionForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuestionForm.media"><code class="docutils literal notranslate"><span class="pre">QuestionForm.media</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.forms.QuizForm"><code class="docutils literal notranslate"><span class="pre">QuizForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuizForm.Meta"><code class="docutils literal notranslate"><span class="pre">QuizForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuizForm.base_fields"><code class="docutils literal notranslate"><span class="pre">QuizForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuizForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">QuizForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.forms.QuizForm.media"><code class="docutils literal notranslate"><span class="pre">QuizForm.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.models">quizzes.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant"><code class="docutils literal notranslate"><span class="pre">AnswerVariant</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.id"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.image"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.is_correct"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.is_correct</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.match_left_id"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.match_left_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.match_right_id"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.match_right_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.objects"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.order"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.participantanswer_set"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.participantanswer_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.question"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.question</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.question_id"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.question_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.AnswerVariant.text"><code class="docutils literal notranslate"><span class="pre">AnswerVariant.text</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.models.Question"><code class="docutils literal notranslate"><span class="pre">Question</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Question.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Question.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.QUESTION_TYPE_CHOICES"><code class="docutils literal notranslate"><span class="pre">Question.QUESTION_TYPE_CHOICES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.answer_variants"><code class="docutils literal notranslate"><span class="pre">Question.answer_variants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.clean"><code class="docutils literal notranslate"><span class="pre">Question.clean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.get_question_type_display"><code class="docutils literal notranslate"><span class="pre">Question.get_question_type_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.id"><code class="docutils literal notranslate"><span class="pre">Question.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.image"><code class="docutils literal notranslate"><span class="pre">Question.image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.objects"><code class="docutils literal notranslate"><span class="pre">Question.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.order"><code class="docutils literal notranslate"><span class="pre">Question.order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.participantanswer_set"><code class="docutils literal notranslate"><span class="pre">Question.participantanswer_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.points"><code class="docutils literal notranslate"><span class="pre">Question.points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.question_type"><code class="docutils literal notranslate"><span class="pre">Question.question_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.quiz"><code class="docutils literal notranslate"><span class="pre">Question.quiz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.quiz_id"><code class="docutils literal notranslate"><span class="pre">Question.quiz_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.text"><code class="docutils literal notranslate"><span class="pre">Question.text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.timer"><code class="docutils literal notranslate"><span class="pre">Question.timer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Question.user_answers"><code class="docutils literal notranslate"><span class="pre">Question.user_answers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz"><code class="docutils literal notranslate"><span class="pre">Quiz</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Quiz.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Quiz.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.STATUS_CHOICES"><code class="docutils literal notranslate"><span class="pre">Quiz.STATUS_CHOICES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.background_image"><code class="docutils literal notranslate"><span class="pre">Quiz.background_image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.clean"><code class="docutils literal notranslate"><span class="pre">Quiz.clean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.created_at"><code class="docutils literal notranslate"><span class="pre">Quiz.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.creator"><code class="docutils literal notranslate"><span class="pre">Quiz.creator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.creator_id"><code class="docutils literal notranslate"><span class="pre">Quiz.creator_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.description"><code class="docutils literal notranslate"><span class="pre">Quiz.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.get_next_by_created_at"><code class="docutils literal notranslate"><span class="pre">Quiz.get_next_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.get_next_by_updated_at"><code class="docutils literal notranslate"><span class="pre">Quiz.get_next_by_updated_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.get_previous_by_created_at"><code class="docutils literal notranslate"><span class="pre">Quiz.get_previous_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.get_previous_by_updated_at"><code class="docutils literal notranslate"><span class="pre">Quiz.get_previous_by_updated_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.get_status_display"><code class="docutils literal notranslate"><span class="pre">Quiz.get_status_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.id"><code class="docutils literal notranslate"><span class="pre">Quiz.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.image"><code class="docutils literal notranslate"><span class="pre">Quiz.image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.logo"><code class="docutils literal notranslate"><span class="pre">Quiz.logo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.objects"><code class="docutils literal notranslate"><span class="pre">Quiz.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.primary_color"><code class="docutils literal notranslate"><span class="pre">Quiz.primary_color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.questions"><code class="docutils literal notranslate"><span class="pre">Quiz.questions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.sessions"><code class="docutils literal notranslate"><span class="pre">Quiz.sessions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.status"><code class="docutils literal notranslate"><span class="pre">Quiz.status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.title"><code class="docutils literal notranslate"><span class="pre">Quiz.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.Quiz.updated_at"><code class="docutils literal notranslate"><span class="pre">Quiz.updated_at</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer"><code class="docutils literal notranslate"><span class="pre">UserAnswer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">UserAnswer.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">UserAnswer.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.created_at"><code class="docutils literal notranslate"><span class="pre">UserAnswer.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.get_next_by_created_at"><code class="docutils literal notranslate"><span class="pre">UserAnswer.get_next_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.get_previous_by_created_at"><code class="docutils literal notranslate"><span class="pre">UserAnswer.get_previous_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.id"><code class="docutils literal notranslate"><span class="pre">UserAnswer.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.is_correct"><code class="docutils literal notranslate"><span class="pre">UserAnswer.is_correct</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.objects"><code class="docutils literal notranslate"><span class="pre">UserAnswer.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.question"><code class="docutils literal notranslate"><span class="pre">UserAnswer.question</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.question_id"><code class="docutils literal notranslate"><span class="pre">UserAnswer.question_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.score"><code class="docutils literal notranslate"><span class="pre">UserAnswer.score</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.selected_variants"><code class="docutils literal notranslate"><span class="pre">UserAnswer.selected_variants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.user"><code class="docutils literal notranslate"><span class="pre">UserAnswer.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.models.UserAnswer.user_id"><code class="docutils literal notranslate"><span class="pre">UserAnswer.user_id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.tests">quizzes.tests module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests.setUp"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests.test_avreorder_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_get_not_allowed"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests.test_avreorder_get_not_allowed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests.test_avreorder_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.AnswerVariantReorderTests.test_avreorder_owner_success"><code class="docutils literal notranslate"><span class="pre">AnswerVariantReorderTests.test_avreorder_owner_success()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.IndexViewTests"><code class="docutils literal notranslate"><span class="pre">IndexViewTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.IndexViewTests.test_index_accessible_by_anyone"><code class="docutils literal notranslate"><span class="pre">IndexViewTests.test_index_accessible_by_anyone()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.IndexViewTests.test_index_accessible_by_authenticated"><code class="docutils literal notranslate"><span class="pre">IndexViewTests.test_index_accessible_by_authenticated()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.MyQuizzesTests"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests.test_my_quizzes_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests.test_my_quizzes_organizer_does_not_see_others_quizzes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests.test_my_quizzes_organizer_shows_own_quizzes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.MyQuizzesTests.test_my_quizzes_participant_redirects"><code class="docutils literal notranslate"><span class="pre">MyQuizzesTests.test_my_quizzes_participant_redirects()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.PermissionTests"><code class="docutils literal notranslate"><span class="pre">PermissionTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.PermissionTests.test_anonymous_gets_redirected_to_login"><code class="docutils literal notranslate"><span class="pre">PermissionTests.test_anonymous_gets_redirected_to_login()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.PermissionTests.test_participant_gets_403_on_organizer_views"><code class="docutils literal notranslate"><span class="pre">PermissionTests.test_participant_gets_403_on_organizer_views()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_get_owner_success"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_get_owner_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_participant_forbidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_invalid_data"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_post_invalid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_owner_success"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_post_owner_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionCreateTests.test_create_post_question_limit"><code class="docutils literal notranslate"><span class="pre">QuestionCreateTests.test_create_post_question_limit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_get_owner_shows_confirm"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.test_qdelete_get_owner_shows_confirm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.test_qdelete_last_question_downgrades_published_quiz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.test_qdelete_post_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.test_qdelete_post_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionDeleteTests.test_qdelete_post_owner_success"><code class="docutils literal notranslate"><span class="pre">QuestionDeleteTests.test_qdelete_post_owner_success()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.test_qedit_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_get_owner_success"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.test_qedit_get_owner_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.test_qedit_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.test_qedit_participant_forbidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionEditTests.test_qedit_post_owner_updates"><code class="docutils literal notranslate"><span class="pre">QuestionEditTests.test_qedit_post_owner_updates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests.test_qreorder_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_get_not_allowed"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests.test_qreorder_get_not_allowed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests.test_qreorder_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuestionReorderTests.test_qreorder_owner_success"><code class="docutils literal notranslate"><span class="pre">QuestionReorderTests.test_qreorder_owner_success()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCRUDPermissionMixin"><code class="docutils literal notranslate"><span class="pre">QuizCRUDPermissionMixin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_get_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_organizer_success"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_get_organizer_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_get_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_get_participant_forbidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_post_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_invalid_data"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_post_invalid_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_organizer_success"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_post_organizer_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizCreateTests.test_create_post_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuizCreateTests.test_create_post_participant_forbidden()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_get_owner_shows_confirm"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests.test_delete_get_owner_shows_confirm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests.test_delete_post_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests.test_delete_post_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizDeleteTests.test_delete_post_owner_success"><code class="docutils literal notranslate"><span class="pre">QuizDeleteTests.test_delete_post_owner_success()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests"><code class="docutils literal notranslate"><span class="pre">QuizEditTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.test_edit_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.test_edit_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.test_edit_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.test_edit_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.test_edit_owner_success"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.test_edit_owner_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.test_edit_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.test_edit_participant_forbidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizEditTests.test_edit_post_owner_updates"><code class="docutils literal notranslate"><span class="pre">QuizEditTests.test_edit_post_owner_updates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.setUp"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.setUp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_anonymous_redirects"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_anonymous_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_get_redirects"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_get_redirects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_other_organizer_not_found"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_other_organizer_not_found()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_participant_forbidden"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_participant_forbidden()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_with_questions_success"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_with_questions_success()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="quizzes.html#quizzes.tests.QuizPublishTests.test_publish_without_questions_redirects_to_edit"><code class="docutils literal notranslate"><span class="pre">QuizPublishTests.test_publish_without_questions_redirects_to_edit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.urls">quizzes.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes.views">quizzes.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.answer_variant_reorder"><code class="docutils literal notranslate"><span class="pre">answer_variant_reorder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.export_quiz_csv"><code class="docutils literal notranslate"><span class="pre">export_quiz_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.export_quiz_json"><code class="docutils literal notranslate"><span class="pre">export_quiz_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.import_quiz"><code class="docutils literal notranslate"><span class="pre">import_quiz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.import_quiz_page"><code class="docutils literal notranslate"><span class="pre">import_quiz_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.my_quizzes"><code class="docutils literal notranslate"><span class="pre">my_quizzes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.question_create"><code class="docutils literal notranslate"><span class="pre">question_create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.question_delete"><code class="docutils literal notranslate"><span class="pre">question_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.question_edit"><code class="docutils literal notranslate"><span class="pre">question_edit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.question_reorder"><code class="docutils literal notranslate"><span class="pre">question_reorder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.quiz_create"><code class="docutils literal notranslate"><span class="pre">quiz_create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.quiz_delete"><code class="docutils literal notranslate"><span class="pre">quiz_delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.quiz_edit"><code class="docutils literal notranslate"><span class="pre">quiz_edit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="quizzes.html#quizzes.views.quiz_publish"><code class="docutils literal notranslate"><span class="pre">quiz_publish()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quizzes.html#module-quizzes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test_setup.html">test_setup module</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="index.html" class="btn btn-neutral float-left" title="QuizRumble documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="accounts.html" class="btn btn-neutral float-right" title="accounts package" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

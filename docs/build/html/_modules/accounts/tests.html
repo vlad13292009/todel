@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>accounts.tests &mdash; документация QuizRumble 0.1</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=490fdf2e"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            QuizRumble
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">quizrumble</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QuizRumble</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">accounts.tests</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код accounts.tests</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">test_setup</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_user_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.test</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestCase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse</span>
+
+<span class="n">User</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="RegistrationTests">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RegistrationTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="RegistrationTests.test_register_organizer_get">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_register_organizer_get">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_organizer_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_organizer&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;accounts/register_form.html&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">],</span> <span class="s2">&quot;organizer&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_register_participant_get">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_register_participant_get">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_participant_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_participant&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;accounts/register_form.html&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">],</span> <span class="s2">&quot;participant&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_register_organizer_post_success">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_register_organizer_post_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_organizer_post_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;org1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;org1@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password1&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password2&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_organizer&quot;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;org1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">role</span><span class="p">,</span> <span class="s2">&quot;organizer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_register_participant_post_success">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_register_participant_post_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_participant_post_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;part1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;part1@example.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password1&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password2&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_participant&quot;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s2">&quot;part1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">role</span><span class="p">,</span> <span class="s2">&quot;participant&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_register_organizer_post_invalid">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_register_organizer_post_invalid">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_register_organizer_post_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password1&quot;</span><span class="p">:</span> <span class="s2">&quot;short&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password2&quot;</span><span class="p">:</span> <span class="s2">&quot;mismatch&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_organizer&quot;</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;invalid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_authenticated_user_redirected_from_register_organizer">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_authenticated_user_redirected_from_register_organizer">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_authenticated_user_redirected_from_register_organizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;existing&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;existing@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass12345!&quot;</span><span class="p">,</span>
+            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;participant&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_organizer&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RegistrationTests.test_authenticated_user_redirected_from_register_participant">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.RegistrationTests.test_authenticated_user_redirected_from_register_participant">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_authenticated_user_redirected_from_register_participant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;existing2&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;existing2@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass12345!&quot;</span><span class="p">,</span>
+            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;organizer&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:register_participant&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LoginTests">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LoginTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="LoginTests.setUp">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;testuser&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;participant&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoginTests.test_login_get">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.test_login_get">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;accounts/login.html&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoginTests.test_login_post_success_participant">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.test_login_post_success_participant">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_post_success_participant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span>
+            <span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;testpass123!&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoginTests.test_login_post_success_organizer">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.test_login_post_success_organizer">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_post_success_organizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">organizer</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;org&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;org@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;orgpass123!&quot;</span><span class="p">,</span>
+            <span class="n">role</span><span class="o">=</span><span class="s2">&quot;organizer&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span>
+            <span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;org&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;orgpass123!&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:my_quizzes&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoginTests.test_login_post_invalid">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.test_login_post_invalid">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_login_post_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span>
+            <span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;wrongpassword&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertContains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;Неверный логин или пароль&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoginTests.test_authenticated_user_redirected_from_login">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LoginTests.test_authenticated_user_redirected_from_login">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_authenticated_user_redirected_from_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;quizzes:index&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LogoutTests">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LogoutTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LogoutTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="LogoutTests.setUp">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LogoutTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;testuser&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LogoutTests.test_logout_post_success">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LogoutTests.test_logout_post_success">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_logout_post_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:logout&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span> <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">wsgi_request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LogoutTests.test_logout_get_redirects">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LogoutTests.test_logout_get_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_logout_get_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:logout&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:login&quot;</span><span class="p">),</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="LogoutTests.test_logout_anonymous_redirects">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.LogoutTests.test_logout_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_logout_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:logout&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;accounts:login&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;accounts:logout&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ProfileTests">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.ProfileTests">[документация]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProfileTests</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="viewcode-block" id="ProfileTests.setUp">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.ProfileTests.setUp">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;testuser&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;testpass123!&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProfileTests.test_profile_authenticated">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.ProfileTests.test_profile_authenticated">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_profile_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">force_login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:profile&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s2">&quot;accounts/profile.html&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProfileTests.test_profile_anonymous_redirects">
+<a class="viewcode-back" href="../../accounts.html#accounts.tests.ProfileTests.test_profile_anonymous_redirects">[документация]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_profile_anonymous_redirects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;accounts:profile&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirects</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;accounts:login&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">?next=</span><span class="si">{</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;accounts:profile&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">fetch_redirect_response</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2026, Maxon4ik. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
